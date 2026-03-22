@@ -39,7 +39,7 @@ const [isEditMode, setIsEditMode] = useState(false);
     useEffect(() => {
         const token = localStorage.getItem("token");
         if (!token) return;
-        fetch("http://localhost:8000/api/categories", {
+        fetch(`${import.meta.env.VITE_API_URL}/api/categories`, {
             headers: { Authorization: `Bearer ${token}` },
         })
             .then((res) => res.json())
@@ -58,7 +58,7 @@ const [isEditMode, setIsEditMode] = useState(false);
         if (filterCategory) query.append("categoryId", filterCategory);
         if (filterType) query.append("type", filterType);
 
-        const res = await fetch(`http://localhost:8000/api/transactions?${query.toString()}`, {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/transactions?${query.toString()}`, {
             headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -128,7 +128,7 @@ if (payload.type === "income") {
 }
 
 
-        const res = await fetch("http://localhost:8000/api/transactions", {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/transactions`, {
             method: "POST",
             headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
             body: JSON.stringify(payload),
@@ -158,7 +158,7 @@ if (payload.type === "income") {
     if (!window.confirm("Delete this transaction?")) return;
 
     try {
-        const res = await fetch(`http://localhost:8000/api/transactions/${id}`, {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/transactions/${id}`, {
             method: "DELETE",
             headers: { Authorization: `Bearer ${token}` }
         });
@@ -209,7 +209,7 @@ const handleUpdate = async (e) => {
     if (payload.type === "income") delete payload.categoryId;
 
     try {
-        const res = await fetch(`http://localhost:8000/api/transactions/${formData.id}`, {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/transactions/${formData.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

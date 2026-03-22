@@ -74,7 +74,7 @@ const Profile = () => {
 
       // API Call
       const res = await axios.put(
-        `http://localhost:8000/api/user/${user._id}`,
+        `${import.meta.env.VITE_API_URL}/api/user/${user._id}`,
         formData, // Send formData directly
         { headers: { Authorization: `Bearer ${token}` } }
       );

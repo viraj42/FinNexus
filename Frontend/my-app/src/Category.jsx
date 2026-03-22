@@ -12,7 +12,7 @@ const Category = () => {
     const token = localStorage.getItem("token");
     if (!token) return;
 
-    fetch("http://localhost:8000/api/categories", {
+    fetch(`${import.meta.env.VITE_API_URL}/api/categories`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
@@ -25,7 +25,7 @@ const Category = () => {
 
     const token = localStorage.getItem("token");
     try {
-      const res = await fetch("http://localhost:8000/api/categories", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/categories`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -47,7 +47,7 @@ const Category = () => {
     if (!window.confirm("Delete this category?")) return;
     const token = localStorage.getItem("token");
 
-    await fetch(`http://localhost:8000/api/categories/${id}`, {
+    await fetch(`${import.meta.env.VITE_API_URL}/api/categories/${id}`, {
       method: "DELETE",
       headers: { Authorization: `Bearer ${token}` },
     });

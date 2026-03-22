@@ -26,9 +26,9 @@ export default function Analytics() {
 
             try {
                 const [resSum, resCat, resTrend] = await Promise.all([
-                    fetch("http://localhost:8000/api/analytics/summary", { headers }),
-                    fetch("http://localhost:8000/api/analytics/category-breakdown", { headers }),
-                    fetch("http://localhost:8000/api/analytics/monthly-trend", { headers })
+                    fetch(`${import.meta.env.VITE_API_URL}/api/analytics/summary`, { headers }),
+                    fetch(`${import.meta.env.VITE_API_URL}/api/analytics/category-breakdown`, { headers }),
+                    fetch(`${import.meta.env.VITE_API_URL}/api/analytics/monthly-trend`, { headers })
                 ]);
 
                 const dSum = await resSum.json();

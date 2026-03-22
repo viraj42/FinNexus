@@ -30,7 +30,7 @@ export default function Budget() {
         if (!token) return;
 
         try {
-            const res = await fetch("http://localhost:8000/api/budget/status", {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/budget/status`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             const data = await res.json();
@@ -63,7 +63,7 @@ export default function Budget() {
         if (!token) return alert("Please login first");
 
         try {
-            const res = await fetch("http://localhost:8000/api/budget", {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/budget`, {
                 method: "PUT",
                 headers: { 
                     "Content-Type": "application/json",

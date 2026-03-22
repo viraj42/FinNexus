@@ -45,7 +45,7 @@ const Dashboard = () => {
     const token = localStorage.getItem("token");
     if (!token) return;
 
-    fetch("http://localhost:8000/api/user/me", {
+    fetch(`${import.meta.env.VITE_API_URL}/api/user/me`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => res.json())
@@ -71,7 +71,7 @@ const Dashboard = () => {
     const token = localStorage.getItem('token');
     if (!token) return;
 
-    fetch('http://localhost:8000/api/categories', {
+    fetch(`${import.meta.env.VITE_API_URL}/api/categories`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(async res => res.json())
@@ -87,7 +87,7 @@ const Dashboard = () => {
     const token = localStorage.getItem("token");
     if (!token) return;
 
-    fetch("http://localhost:8000/api/transactions", {
+    fetch(`${import.meta.env.VITE_API_URL}/api/transactions`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(async res => res.json())
@@ -115,7 +115,7 @@ const Dashboard = () => {
         try {
           const token = localStorage.getItem("token");
   
-          const response = await fetch("http://localhost:8000/api/prediction/next-month", {
+          const response = await fetch(`${import.meta.env.VITE_API_URL}/api/prediction/next-month`, {
             method: "GET",
             headers: {
               "Authorization": `Bearer ${token}`,
@@ -150,7 +150,7 @@ const Dashboard = () => {
     const token = localStorage.getItem("token");
     if (!token) return;
 
-    fetch("http://localhost:8000/api/analytics/summary", {
+    fetch(`${import.meta.env.VITE_API_URL}/api/analytics/summary`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(async res => res.json())
@@ -163,7 +163,7 @@ const Dashboard = () => {
     const token = localStorage.getItem("token");
     if (!token) return;
 
-    fetch("http://localhost:8000/api/budget/status", {
+    fetch(`${import.meta.env.VITE_API_URL}/api/budget/status`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(async res => res.json())
@@ -176,7 +176,7 @@ const Dashboard = () => {
     const token = localStorage.getItem("token");
     if (!token) return;
 
-    fetch("http://localhost:8000/api/analytics/monthly-trend", {
+    fetch(`${import.meta.env.VITE_API_URL}/api/analytics/monthly-trend`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(async res => res.json())
@@ -220,7 +220,7 @@ const Dashboard = () => {
       }
 
 
-      const res = await fetch("http://localhost:8000/api/transactions", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/transactions`, {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify(payload)
