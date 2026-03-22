@@ -1,5 +1,5 @@
 const User = require("../models/User");
-const Category = require("../models/category");
+const Category = require("../models/Category");
 
 module.exports.completeOnboarding = async (req, res) => {
   try {
