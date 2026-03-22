@@ -1,0 +1,37 @@
+@import "tailwindcss";
+/* Disable text selection & caret on non-input UI elements */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Prevent blinking text cursor on clickable UI */
+div, span, p, label, button, a {
+  caret-color: transparent;
+}
+
+/* Disable text selection on UI cards */
+.card,
+.pref-card,
+.category-card,
+button,
+a,
+.sidebar,
+.nav-item {
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Restore text selection for actual inputs */
+input,
+textarea {
+  user-select: text;
+  caret-color: auto;
+}
+
+/* Remove focus outline from non-accessibility-critical elements */
+button:focus,
+div:focus,
+span:focus {
+  outline: none;
+}

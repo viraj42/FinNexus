@@ -1,0 +1,930 @@
+:root {
+  --primary-purple: #6C5DD3;
+  --bg-light: #F7F7F9;
+  --white: #ffffff;
+  --text-dark: #1F2937;
+  --text-gray: #9CA3AF;
+  
+  /* Color Coding */
+  --color-income: #10B981;
+  --color-expense: #EF4444;
+  --color-budget: #F59E0B;
+  --color-predict: #8B5CF6;
+  
+  /* Dimensions & Transitions */
+  --sidebar-width: 260px;
+  --sidebar-width-collapsed: 80px;
+  --transition-speed: 0.3s;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+}
+
+.app-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* --- Sidebar Styling --- */
+.sidebar {
+  background: var(--white);
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #E5E7EB;
+  transition: width var(--transition-speed) ease;
+  z-index: 50;
+}
+
+.sidebar.open { width: var(--sidebar-width); }
+.sidebar.closed { width: var(--sidebar-width-collapsed); }
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3rem;
+  padding-left: 0.5rem;
+}
+
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  background: #000;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.logo-text {
+  margin-left: 10px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.toggle-btn {
+  margin-left: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-gray);
+}
+
+.nav-menu {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  color: var(--text-gray);
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.nav-item:hover {
+  background-color: #F3F4FF;
+  color: var(--primary-purple);
+}
+
+.nav-item.active {
+  background-color: var(--primary-purple);
+  color: var(--white);
+  box-shadow: 0 4px 12px rgba(108, 93, 211, 0.3);
+}
+
+.nav-item span {
+  margin-left: 1rem;
+  font-weight: 500;
+}
+
+.sidebar-footer {
+  border-top: 1px solid #E5E7EB;
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* --- Main Content Styling --- */
+.main-content {
+  flex: 1;
+  padding: 0.75rem;     /* ↓↓ UPDATED ↓↓ */
+  overflow-y: auto;
+}
+
+/* Navbar */
+.top-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;   /* ↓↓ UPDATED ↓↓ */
+}
+
+.header-titles h1 { font-size: 1.8rem; font-weight: 700; }
+.header-titles p { color: var(--text-gray); font-size: 0.9rem; }
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.icon-btn {
+  background: var(--white);
+  border: none;
+  padding: 0.6rem;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+
+.notification-dot {
+  position: absolute;
+  top: 5px;
+  right: 8px;
+  width: 8px;
+  height: 8px;
+  background: var(--color-expense);
+  border-radius: 50%;
+  border: 2px solid var(--white);
+}
+
+/* User Profile */
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: var(--white);
+  padding: 0.4rem 1rem 0.4rem 0.4rem;
+  border-radius: 30px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+
+.user-profile.clickable {
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.user-profile.clickable:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.user-profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.user-info { display: flex; flex-direction: column; }
+.user-name { font-weight: 600; font-size: 0.9rem; }
+.user-email { font-size: 0.75rem; color: var(--text-gray); }
+
+/* --- Stats Grid --- */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: var(--white);
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+/* Dynamic Stats Colors */
+.bg-green-light { background: #ECFDF5; }
+.text-green { color: var(--color-income); }
+
+.bg-red-light { background: #FEF2F2; }
+.text-red { color: var(--color-expense); }
+
+.bg-amber-light { background: #FFFBEB; }
+.text-amber { color: var(--color-budget); }
+
+.bg-purple-light { background: #F3F4FF; }
+.text-purple { color: var(--color-predict); }
+
+.stat-title { font-size: 0.85rem; color: var(--text-gray); font-weight: 500; }
+.stat-value { font-size: 1.8rem; font-weight: 700; margin: 0.5rem 0; }
+.stat-trend { font-size: 0.85rem; font-weight: 600; }
+.stat-trend.up { color: var(--color-income); }
+.stat-trend.down-bad { color: var(--color-expense); }
+.stat-trend.neutral { color: var(--text-gray); }
+
+/* --- Content Split & Layout --- */
+.content-split {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+}
+
+.section-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+  display: flex;
+  flex-direction: column;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.section-header h2 { font-size: 1.2rem; font-weight: 700; }
+
+/* --- Table Section --- */
+.section-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.table-search {
+  background: var(--bg-light);
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid transparent;
+}
+
+.table-search:focus-within {
+  border-color: var(--primary-purple);
+  background: #fff;
+}
+
+.table-search input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 0.85rem;
+  width: 150px;
+}
+
+.primary-btn {
+  background: var(--primary-purple);
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.primary-btn:hover { background: #5b4cc4; }
+
+/* Table Elements */
+.table-responsive { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+
+th {
+  text-align: left;
+  color: var(--text-gray);
+  font-weight: 500;
+  font-size: 0.8rem;
+  padding-bottom: 1rem;
+}
+
+td {
+  padding: 1rem 0;
+  border-top: 1px solid #F3F4F6;
+  vertical-align: middle;
+  font-size: 0.9rem;
+}
+
+.td-name { display: flex; align-items: center; gap: 0.8rem; font-weight: 600; }
+.cat-icon { 
+  width: 32px; height: 32px; 
+  background: #F3F4FF; color: var(--primary-purple); 
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center; 
+}
+
+.category-pill {
+  background: #F3F4F6; color: var(--text-dark);
+  padding: 4px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: 500;
+}
+
+.text-muted { color: var(--text-gray); }
+.text-sm { font-size: 0.8rem; }
+.text-right { text-align: right; }
+.text-center { text-align: center; }
+.text-capitalize { text-transform: capitalize; }
+.fw-bold { font-weight: 700; }
+
+.truncate-text {
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* --- Chart Section --- */
+.period-selector {
+  border: 1px solid #E5E7EB;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.8rem;
+}
+
+.chart-summary { margin-bottom: 1.5rem; }
+.chart-summary h3 { font-size: 2rem; font-weight: 700; }
+.chart-summary p { font-size: 0.85rem; color: var(--text-gray); }
+
+/* --- Modal Styles --- */
+.modal-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1000;
+}
+
+.modal-container {
+  background: var(--white);
+  width: 500px;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-header {
+  display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;
+}
+.modal-header h2 { font-size: 1.4rem; font-weight: 700; }
+.close-btn { background: none; border: none; cursor: pointer; color: var(--text-gray); }
+
+/* Form Styles */
+.txn-form { display: flex; flex-direction: column; gap: 1.2rem; }
+
+.form-group label {
+  display: block; font-size: 0.85rem; font-weight: 500; margin-bottom: 0.4rem; color: var(--text-dark);
+}
+
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%;
+  padding: 0.7rem;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
+  background: #F9FAFB;
+}
+
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  border-color: var(--primary-purple);
+  background: #fff;
+}
+
+.form-group textarea { height: 80px; resize: none; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+/* Type Select Toggle */
+.type-select { display: flex; gap: 1rem; background: #F3F4F6; padding: 4px; border-radius: 10px; }
+
+.type-option {
+  flex: 1; text-align: center; padding: 8px; cursor: pointer;
+  border-radius: 8px; font-weight: 600; font-size: 0.9rem;
+  color: var(--text-gray); transition: all 0.2s;
+}
+
+.type-option input { display: none; }
+.type-option.active.expense { background: var(--white); color: var(--color-expense); box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+.type-option.active.income { background: var(--white); color: var(--color-income); box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+
+.submit-btn {
+  background: var(--text-dark);
+  color: white;
+  padding: 0.9rem;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.submit-btn:hover { background: #000; }
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1024px) {
+  .content-split { grid-template-columns: 1fr; }
+  .sidebar.open { position: fixed; box-shadow: 4px 0 20px rgba(0,0,0,0.1); }
+}
+
+@media (max-width: 768px) {
+  .modal-container { width: 95%; margin: 1rem; }
+  .form-row { grid-template-columns: 1fr; }
+  .header-titles h1 { font-size: 1.5rem; }
+  .search-bar { display: none; }
+}
+
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-image {
+  width: 50px;
+  height: 40px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+/* =========================================
+   Sidebar Specific Styling (Unique Classes)
+   ========================================= */
+
+/* Main Container */
+.sb-container {
+  height: 100vh;
+  background: #FFFFFF;
+  border-right: 1px solid #E5E7EB;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s ease;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+/* State Modifiers */
+.sb-container.sb-expanded { width: 250px; }
+.sb-container.sb-collapsed { width: 80px; }
+
+/* 1. Header */
+.sb-header {
+  padding: 1.5rem 1rem;
+}
+
+.sb-logo-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+}
+
+.sb-brand-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.sb-logo-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+}
+
+.sb-brand-title {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #1F2937; /* Dark Gray */
+}
+
+.sb-toggle-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #6B7280;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 6px;
+}
+
+.sb-toggle-btn:hover {
+  background: #F3F4F6;
+  color: #4F46E5;
+}
+
+/* 2. Navigation Area */
+.sb-nav-area {
+  flex: 1;
+  padding: 1rem 0.75rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* 3. Footer Area */
+.sb-footer {
+  padding: 1rem 0.75rem 2rem 0.75rem;
+  border-top: 1px solid #F3F4F6;
+}
+
+/* Group Headers */
+.sb-group-header {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #9CA3AF;
+  margin-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Link Items */
+.sb-link-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0.75rem;
+  color: #4B5563;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.2s;
+  margin-bottom: 4px;
+}
+
+.sb-link-item:hover {
+  background-color: #F3F4F6;
+  color: #111827;
+}
+
+/* Active State */
+.sb-link-item.sb-active {
+  background-color: #EEF2FF; /* Light Indigo */
+  color: #4F46E5; /* Primary Indigo */
+  font-weight: 500;
+}
+
+/* Icon & Text Wrappers */
+.sb-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+}
+
+.sb-link-text {
+  white-space: nowrap;
+  font-size: 0.95rem;
+}
+
+/* --- Collapsed State Overrides --- */
+.sb-container.sb-collapsed .sb-logo-row {
+  justify-content: center;
+}
+
+.sb-container.sb-collapsed .sb-link-item {
+  justify-content: center;
+  padding: 0.75rem 0;
+}
+
+/* Hide text elements when collapsed */
+.sb-container.sb-collapsed .sb-link-text,
+.sb-container.sb-collapsed .sb-group-header {
+  display: none;
+}
+
+/* --- 1. RESET & DEFAULTS --- */
+.mobile-trigger, .sidebar-overlay { display: none; }
+
+/* --- 2. ELITE RESPONSIVE CORE --- */
+@media (max-width: 768px) {
+  .app-container { flex-direction: column !important; position: relative; }
+
+  /* Clear Dashboard Header Trigger - Fixes "Double Icon" bug */
+  .header-titles .mobile-only-icon, 
+  .header-titles button { display: none !important; }
+
+  /* The Floating Hamburger (The ONLY trigger) */
+  .mobile-trigger {
+    display: flex;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 999; /* Below Drawer, Above Content */
+    background: #ffffff;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    cursor: pointer;
+    border: 1px solid #e5e7eb;
+  }
+
+  /* The Sidebar Drawer System */
+  .sb-container {
+    position: fixed !important;
+    left: 0;
+    top: 0;
+    height: 100vh !important;
+    z-index: 1001 !important; /* Always on top */
+    width: 280px !important;
+    background: #ffffff;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 20px 0 50px rgba(0,0,0,0.2);
+  }
+
+  /* Transform logic for absolute best performance */
+  .sb-container.sb-collapsed { transform: translateX(-110%); }
+  .sb-container.sb-expanded { transform: translateX(0); }
+
+  /* The Backdrop Fix (Fixes the "Blur/Black screen" issue) */
+  .sidebar-overlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.5); /* Slate gray transparent */
+    backdrop-filter: blur(4px);
+    z-index: 1000; /* Between Trigger and Sidebar */
+    opacity: 1;
+  }
+
+  /* Main Content Layout Fix */
+  .main-content {
+    width: 100vw !important;
+    padding: 1rem !important;
+    padding-top: 80px !important; /* Prevents overlap with trigger */
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+}
+
+/* Helper for icon switching inside the sidebar */
+@media (min-width: 769px) {
+  .mobile-only-icon { display: none !important; }
+}
+
+/* ============================================================
+   FINAL ABSOLUTE CURE: RECENT TRANSACTIONS & CHART ALIGNMENT
+   ============================================================ */
+
+@media (max-width: 768px) {
+  /* 1. Prevent any horizontal overflow at the root */
+  .app-container, .main-content, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+  }
+
+  .main-content {
+    /* padding: 1rem !important; */
+    /* padding-top: 20px !important; Space for Hamburger */
+  }
+
+  /* 2. Content Split Fix: Stacking and Sizing */
+  .content-split {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 20px !important;
+  }
+
+  .section-card {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 1.25rem 1rem !important;
+    border-radius: 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 3. Recent Transactions Table: THE CURE */
+  .table-responsive {
+    width: 100% !important;
+    overflow: hidden !important; /* Kill horizontal scroll */
+  }
+
+  table {
+    width: 100% !important;
+    table-layout: fixed !important; /* Force columns to stay in box */
+  }
+
+  /* STRICT COLUMN PRUNING: Only Name and Amount stay */
+  th:nth-child(2), td:nth-child(2), /* Category */
+  th:nth-child(3), td:nth-child(3), /* Date */
+  th:nth-child(4), td:nth-child(4), /* Method */
+  th:nth-child(5), td:nth-child(5)  /* Note */ {
+    display: none !important;
+  }
+
+  /* Proper spacing for what's left */
+  th:first-child, td:first-child { width: 65% !important; overflow: hidden; text-overflow: ellipsis; }
+  th:last-child, td:last-child { width: 35% !important; text-align: right !important; }
+
+  /* 4. Action Bar alignment (Search + Add New) */
+  .section-actions {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 10px !important;
+    width: 100% !important;
+    margin-top: 5px;
+  }
+
+  .table-search { flex: 1 !important; height: 42px !important; }
+  .primary-btn { 
+    flex: 0 0 auto !important; 
+    height: 42px !important; 
+    font-size: 0.85rem !important;
+    padding: 0 12px !important;
+  }
+
+  /* 5. Expense Trends Graph: THE CURE */
+  .chart-section {
+    width: 100% !important;
+    min-height: 320px !important;
+  }
+
+  .chart-container, 
+  .recharts-responsive-container {
+    width: 100% !important;
+    height: 220px !important;
+    margin-top: 10px;
+  }
+
+  /* Prevent Recharts from overflowing its container */
+  .recharts-surface {
+    width: 100% !important;
+  }
+
+  /* 6. Header Profile Sync */
+  .header-titles h1 { 
+    margin-left: 55px !important; 
+    font-size: 1.4rem !important; 
+  }
+}
+
+/* Extra tight fix for 360px width phones */
+@media (max-width: 380px) {
+  .header-titles h1 { font-size: 1.2rem !important; }
+  .stat-value { font-size: 1.25rem !important; }
+}
+
+/* ============================================================
+   ELITE ACTION BAR: SEARCH & ADD NEW BUTTON CURE
+   ============================================================ */
+
+@media (max-width: 768px) {
+  /* 1. Ensure the container doesn't squash the children */
+  .section-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .section-header h2 {
+    font-size: 1.25rem !important;
+    font-weight: 700;
+    margin: 0 !important;
+  }
+
+  /* 2. THE ROW (Container for Search + Button) */
+  .section-actions {
+    display: flex !important;
+    flex-direction: row !important; /* Force side-by-side */
+    width: 100% !important;
+    gap: 12px !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+
+  /* 3. SEARCH BAR: Elastic Growth */
+  .table-search {
+    flex: 1 !important; /* Forces search to fill all available left space */
+    min-width: 0 !important; /* Crucial fix for flex-shrinking in browsers */
+    height: 46px !important;
+    background: #f8fafc !important;
+    border: 1.5px solid #e2e8f0 !important;
+    border-radius: 12px !important;
+    padding: 0 12px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  .table-search input {
+    width: 100% !important;
+    font-size: 14px !important;
+    border: none !important;
+    background: transparent !important;
+    outline: none !important;
+    padding-left: 8px !important;
+  }
+
+  /* 4. ADD NEW BUTTON: Proportional & Solid */
+  .primary-btn {
+    flex: 0 0 auto !important; /* Prevents the button from squashing or growing */
+    height: 46px !important;
+    padding: 0 20px !important;
+    background: var(--primary-purple) !important;
+    color: white !important;
+    font-weight: 600 !important;
+    font-size: 0.9rem !important;
+    border-radius: 12px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    white-space: nowrap !important; /* Prevents "Add New" from breaking into 2 lines */
+    box-shadow: 0 4px 12px rgba(108, 93, 211, 0.25) !important;
+    border: none !important;
+  }
+
+  /* SVG Icon sizing inside button */
+  .primary-btn svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  /* Ensure the table doesn't cause overflow while we are at it */
+  .table-responsive {
+    margin: 0 !important;
+    width: 100% !important;
+  }
+}
+
+
+  .header-titles h1 {
+  margin: 0;
+}
+
+.top-navbar {
+  /* margin-bottom: 0.5rem; was 1rem */
+}
+
+.main-content {
+  /* padding-top: 0.5rem; instead of 0.75rem */
+}
+
+  /* 🔥 FIX: Restrict onboarding styles */
+.onboard-wrapper input {
+  font-size: 2rem;
+}
+/* 🔥 FIX: Restore modal normal size */
+.modal-container input,
+.modal-container select,
+.modal-container textarea {
+  font-size: 0.95rem !important;
+  padding: 0.7rem !important;
+}

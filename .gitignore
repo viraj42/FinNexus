@@ -1,0 +1,70 @@
+# =========================
+# NODE MODULES (ALL LEVELS)
+# =========================
+node_modules/
+**/node_modules/
+
+# =========================
+# ENV FILES (SECRETS)
+# =========================
+.env
+.env.*
+*.env
+
+# =========================
+# BUILD / DIST FILES
+# =========================
+dist/
+build/
+**/dist/
+**/build/
+
+# =========================
+# LOG FILES
+# =========================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# =========================
+# SYSTEM FILES
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# IDE / EDITOR FILES
+# =========================
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# =========================
+# CACHE / TEMP FILES
+# =========================
+.cache/
+.tmp/
+.temp/
+
+# =========================
+# FRONTEND SPECIFIC
+# =========================
+Frontend/my-app/node_modules/
+Frontend/my-app/build/
+
+# =========================
+# BACKEND SPECIFIC
+# =========================
+Backend/node_modules/
+
+# =========================
+# OPTIONAL (LOCK FILES - KEEP IF TEAM PROJECT)
+# =========================
+# Uncomment if you want to ignore lock files
+# package-lock.json
+# yarn.lock

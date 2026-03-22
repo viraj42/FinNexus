@@ -1,0 +1,439 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    
+    background-color: #f8fafc; /* Very light background for the whole page */
+}
+
+/* --- WRAPPER LAYOUT (Achieving the 2-Column Split) --- */
+
+.main-app-wrapper {
+    /* Ensures the component takes full viewport height for the split screen effect */
+    min-height: 100vh;
+}
+
+.main-page-container {
+    display: flex;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+/* LEFT COLUMN: Illustration/Marketing Panel */
+.illustration-panel {
+    flex: 1; /* Takes up 50% on large screens */
+    display: flex;
+    caret-color: transparent;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem;
+    background-color: #e0f2fe; /* Light blue background */
+    position: relative;
+    overflow: hidden;
+    /* Simple dotted pattern effect to match the image's background texture */
+    background-image: radial-gradient(#93c5fd 0.5px, transparent 0.5px);
+    background-size: 15px 15px;
+}
+
+.illustration-content {
+    text-align: center;
+    max-width: 400px;
+    z-index: 10;
+}
+
+.illustration-content img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 2rem;
+    filter: drop-shadow(0 10px 10px rgba(0,0,0,0.1));
+    border-radius: 0.75rem; /* Apply border radius here for image */
+}
+.illustration-content p {
+    font-size: 1.125rem;
+    color: #0d9488; /* Teal-like color */
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+.illustration-content h3 {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: #1e3a8a; /* Dark blue/indigo */
+    line-height: 1.2;
+}
+
+/* --- RIGHT COLUMN: Login Form Area (using existing classes) --- */
+
+/* Container */
+.login-container {
+    flex: 1; /* Takes up 50% on large screens */
+    display: flex;
+    justify-content: center;
+    caret-color: transparent;
+    align-items: center;
+    background-color: #ffffff; /* Pure white background for the form side */
+    padding: 2rem;
+    margin-top: 0; 
+    animation: none; 
+    overflow-y: auto; 
+}
+
+/* Card Wrapper (Now a clean content wrapper) */
+.login-card {
+    width: 100%;
+    max-width: 400px; 
+    background: transparent; 
+    border: none; 
+    
+    border-radius: 0; 
+    box-shadow: none; 
+    padding: 0; 
+}
+
+/* Header / Title */
+.login-card h2 {
+    text-align: left; /* Aligned left, as per image */
+    font-size: 2.5rem; 
+    font-weight: 800;
+    color: #1e3a8a; 
+    background: none;
+    -webkit-text-fill-color: initial;
+    margin-bottom: 0.25rem;
+}
+
+.login-card p.subtitle {
+    text-align: left; /* Aligned left, as per image */
+    color: #6b7280; /* Gray color */
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+/* Form */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+}
+
+/* Labels: Hidden as the image uses placeholders */
+.login-form label {
+    display: none; 
+}
+
+/* Inputs */
+.login-form input {
+    width: 100%; /* Full width */
+    padding: 0.75rem 1.5rem; 
+    padding-left: 3rem; /* Space for the icon */
+    background: #ffffff;
+    caret-color: initial;
+    border: 1px solid #d1d5db; /* Light gray border */
+    border-radius: 9999px; /* Fully rounded */
+    color: #1f2937;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.login-form input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59,130,246,0.3); 
+}
+
+/* Input Icons */
+.input-icon {
+    position: absolute;
+    left: 0.3rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #79808d; /* Lighter icon color */
+    font-size: 0.5rem;
+    pointer-events: none;
+}
+/* Keep icon color consistent on focus */
+.login-form input:focus + .input-icon {
+    color: #9ca3af; 
+}
+
+
+/* Button (Submit) */
+.login-form button[type="submit"] {
+    width: 100%;
+    background: #3b82f6; /* Solid blue */
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px; /* Fully rounded */
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+    margin-top: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(59,130,246,0.2), 0 2px 4px -2px rgba(59,130,246,0.2);
+}
+
+.login-form button[type="submit"]:hover {
+    background: #2563eb;
+    transform: none; 
+}
+
+/* Forgot Password Link (New element added to match image) */
+.forgot-password {
+    text-align: right;
+    font-size: 0.875rem;
+    margin-top: -0.75rem; 
+}
+.forgot-password a {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+/* Separator */
+.social-separator {
+    text-align: center;
+    margin: 2.5rem 0 1.5rem 0;
+    color: #9ca3af;
+    font-size: 0.875rem;
+    position: relative;
+}
+.social-separator::before, .social-separator::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 35%;
+    height: 1px;
+    background-color: #e5e7eb;
+}
+.social-separator::before { left: 0; }
+.social-separator::after { right: 0; }
+
+/* Social Buttons */
+.social-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+.social-button {
+    background: #fff;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: #4b5563;
+    width: 3rem;
+    height: 3rem;
+}
+.social-button:hover {
+    border-color: #3b82f6;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+/* Switch-to-Signup Link */
+.switch-link {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 400; 
+    font-size: 0.875rem;
+    text-align: center;
+    margin-top: 1.5rem; 
+    color: #6b7280; 
+}
+.switch-link a {
+    color: #3b82f6; 
+    text-decoration: none;
+    font-weight: 600; 
+}
+.switch-link a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+.login-footer {
+    text-align: center;
+    font-size: 0.75rem;
+    color: #9ca3af;
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid #f3f4f6;
+    line-height: 1.5;
+}
+.login-footer a {
+    color: #9ca3af;
+    text-decoration: none;
+    margin: 0 0.5rem;
+}
+.login-footer a:hover {
+    color: #6b7280;
+}
+
+/* --- RESPONSIVENESS (for Mobile/Tablet) --- */
+@media (max-width: 768px) {
+    .main-page-container {
+        flex-direction: column; /* Stack columns on mobile */
+    }
+    .illustration-panel {
+        min-height: 250px; 
+        padding: 2rem 1rem;
+    }
+    .illustration-content h3 {
+        font-size: 1.5rem;
+    }
+    .illustration-content p {
+        font-size: 0.9rem;
+    }
+    .login-container {
+        min-height: auto; 
+        padding: 2rem 1rem;
+    }
+}
+
+.signup-redirect {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #6b7280;
+    font-weight: 400;
+    caret-color: transparent;
+}
+
+.signup-redirect a {
+    color: #3b82f6;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.signup-redirect a:hover {
+    text-decoration: underline;
+}
+.login-container > .subtitle {
+    text-align: left;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #6b7280;
+    margin-bottom: 2rem;
+}
+
+
+/* ------------------- ENHANCED MOBILE UI (STRICT) ------------------- */
+@media (max-width: 768px) {
+    .main-page-container {
+        flex-direction: column !important;
+        background-color: #ffffff; /* Consistent clean backdrop */
+    }
+
+    /* --- 1. The "Brand Header" Section --- */
+    .illustration-panel {
+        flex: none !important;
+        padding: 3rem 1.5rem 1.5rem 1.5rem !important;
+        background-image: radial-gradient(#93c5fd 0.8px, transparent 0.8px) !important;
+        background-size: 20px 20px !important;
+        border-bottom: 1px solid rgba(30, 58, 138, 0.05);
+    }
+
+    .illustration-content {
+        max-width: 100% !important;
+    }
+
+    /* If video is taking too much space, we bound it or hide it for a cleaner look */
+    .illustration-content video {
+        max-width: 220px !important;
+        margin: 0 auto 1.5rem auto !important;
+        display: block;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    .illustration-content p {
+        font-size: 0.9rem !important;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #0d9488;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .illustration-content h3 {
+        font-size: 1.75rem !important;
+        padding: 0 10px;
+        line-height: 1.3;
+    }
+
+    /* --- 2. The Form Container --- */
+    .login-container {
+        padding: 2rem 1.5rem 4rem 1.5rem !important;
+        align-items: flex-start !important;
+    }
+
+    .login-card {
+        max-width: 100% !important;
+    }
+
+    /* Enhanced Typography */
+    .login-card h2 {
+        font-size: 2.25rem !important;
+        margin-bottom: 0.5rem !important;
+        letter-spacing: -1px;
+    }
+
+    .login-card p.subtitle {
+        font-size: 1.05rem !important;
+        margin-bottom: 2.5rem !important;
+        color: #64748b;
+    }
+
+    /* --- 3. Structured Input Fields --- */
+    .login-form {
+        gap: 1rem !important;
+    }
+
+    .login-form input {
+        height: 56px !important; /* Standard height for premium mobile apps */
+        border: 1.5px solid #e2e8f0 !important;
+        background: #f8fafc !important;
+        font-size: 16px !important; /* Prevents iOS Zoom */
+        padding-left: 3.5rem !important;
+        border-radius: 16px !important; /* Slightly more modern than full pill on mobile */
+    }
+
+    .login-form input:focus {
+        background: #fff !important;
+        border-color: #3b82f6 !important;
+        box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1) !important;
+    }
+
+    .input-icon {
+        left: 1.25rem !important;
+        font-size: 1.2rem !important;
+    }
+
+    /* --- 4. High-Efficiency Submit Button --- */
+    .login-form button[type="submit"] {
+        height: 56px !important;
+        font-size: 1.1rem !important;
+        border-radius: 16px !important;
+        margin-top: 1rem !important;
+        background: #3b82f6 !important; /* Using the Dark Blue for more "Serious" look */
+    }
+
+    /* --- 5. Navigation Links UI --- */
+    .signup-redirect {
+        background: #f1f5f9;
+        padding: 1.25rem;
+        border-radius: 12px;
+        margin-top: 2.5rem !important;
+    }
+}

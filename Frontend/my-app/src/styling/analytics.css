@@ -1,0 +1,475 @@
+/* ---- General Layout ---- */
+.analytics-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.charts-grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; /* 40% - 60% split */
+    gap: 24px;
+}
+
+/* ---- Card Styling (Reuse common, specific overrides here) ---- */
+.section-card {
+    background: white;
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    border: 1px solid #f1f5f9;
+}
+
+.card-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 20px;
+}
+
+/* ---- Section 1: Stats Cards ---- */
+.stat-card {
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+    border: 1px solid #f1f5f9;
+    transition: transform 0.2s;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+}
+
+.stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat-icon.text-green { background: #dcfce7; color: #16a34a; }
+.stat-icon.text-red { background: #fee2e2; color: #dc2626; }
+.stat-icon.text-blue { background: #dbeafe; color: #2563eb; }
+.stat-icon.text-purple { background: #f3e8ff; color: #6C5DD3; }
+
+.stat-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-title { font-size: 13px; color: #64748b; font-weight: 500; }
+.stat-value { font-size: 20px; font-weight: 700; color: #1e293b; margin: 4px 0 2px 0; }
+.stat-subtext { font-size: 11px; color: #94a3b8; }
+.text-capitalize { text-transform: capitalize; }
+
+
+/* ---- Section 2: Breakdown Layout (Flex: Chart Left, List Right) ---- */
+.breakdown-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Donut Chart Wrapper */
+.pie-chart-wrapper {
+    position: relative;
+    flex: 1;
+    min-width: 180px;
+}
+
+.chart-center-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    pointer-events: none;
+}
+
+.chart-center-text span { font-size: 12px; color: #94a3b8; }
+.chart-center-text h5 { margin: 0; font-size: 16px; color: #1e293b; font-weight: 700; }
+
+/* Category List Wrapper */
+.category-list-scroll {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 250px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+/* Custom Scrollbar */
+.category-list-scroll::-webkit-scrollbar { width: 4px; }
+.category-list-scroll::-webkit-scrollbar-track { background: #f1f5f9; }
+.category-list-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+
+/* Individual List Item */
+.cat-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #f8fafc;
+}
+
+.cat-item-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cat-color-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 4px;
+}
+
+.cat-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.cat-name { font-size: 13px; font-weight: 600; color: #334155; }
+.cat-percent { font-size: 11px; }
+
+.cat-amount {
+    font-weight: 700;
+    font-size: 13px;
+    color: #1e293b;
+}
+
+
+/* ---- Section 3: Trend Chart ---- */
+.trend-chart-wrapper {
+    margin-top: 10px;
+}
+
+
+/* ---- Responsive Design ---- */
+@media (max-width: 1200px) {
+    .analytics-summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .charts-grid-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .analytics-summary-grid {
+        grid-template-columns: 1fr;
+    }
+    .breakdown-content {
+        flex-direction: column;
+    }
+    .category-list-scroll {
+        width: 100%;
+    }
+}
+.category-rings-section {
+  background: #fff;
+  padding: 20px;
+  border-radius: 14px;
+  margin-top: 25px;
+}
+
+.rings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(150px,1fr));
+  gap: 20px;
+}
+
+.ring-card {
+  text-align: center;
+  padding: 15px;
+  border-radius: 12px;
+  background: #f9fafb;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.ring-label {
+  margin-top: -10px;
+}
+
+.ring-title {
+  font-weight: 600;
+}
+
+.ring-percent {
+  color: #6c5dd3;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* Disable text selection & caret on non-input UI elements */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Prevent blinking text cursor on clickable UI */
+div, span, p, label, button, a {
+  caret-color: transparent;
+}
+
+/* Disable text selection on UI cards */
+.card,
+.pref-card,
+.category-card,
+button,
+a,
+.sidebar,
+.nav-item {
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Restore text selection for actual inputs */
+input,
+textarea {
+  user-select: text;
+  caret-color: auto;
+}
+
+/* Remove focus outline from non-accessibility-critical elements */
+button:focus,
+div:focus,
+span:focus {
+  outline: none;
+}
+
+/* ============================================================
+   ✅ ANALYTICS: SINGLE CLEAN MOBILE SYSTEM
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  /* ----------- ROOT LAYOUT ----------- */
+  .app-container {
+    flex-direction: column;
+  }
+
+  .main-content {
+    width: 100%;
+    padding: 0.75rem 1rem 1rem;
+    overflow-x: hidden;
+  }
+
+  /* ----------- HEADER ----------- */
+  .top-navbar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+  }
+
+  .header-titles {
+    margin-left: 52px; /* space for hamburger */
+  }
+
+  .header-titles h1 {
+    font-size: 1.3rem;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .header-titles p {
+    display: none; /* cleaner mobile */
+  }
+
+  /* ----------- SUMMARY CARDS ----------- */
+  .analytics-summary-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .stat-card {
+    padding: 1rem;
+    border-radius: 14px;
+  }
+
+  /* ----------- MAIN CONTENT FLOW ----------- */
+  .charts-grid-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .section-card {
+    width: 100%;
+    padding: 1.25rem 1rem;
+    border-radius: 16px;
+  }
+
+  .card-header h3 {
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+
+  /* ----------- BREAKDOWN (PIE + LIST) ----------- */
+  .breakdown-content {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .pie-chart-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .chart-center-text h5 {
+    font-size: 14px;
+  }
+
+  .category-list-scroll {
+    width: 100%;
+    max-height: none;
+    gap: 10px;
+  }
+
+  .cat-list-item {
+    padding-bottom: 6px;
+  }
+
+  /* ----------- CHART FIX (CRITICAL) ----------- */
+  .chart-card {
+    overflow: hidden;
+  }
+
+  .trend-chart-wrapper {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .recharts-responsive-container {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* ----------- CATEGORY RINGS ----------- */
+  .category-rings-section {
+    margin-top: 20px;
+    padding: 1rem;
+  }
+
+  .rings-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .ring-card {
+    padding: 10px;
+  }
+
+  .ring-title {
+    font-size: 13px;
+  }
+
+  .ring-percent {
+    font-size: 14px;
+  }
+  .ring-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* ✅ horizontal center */
+  justify-content: center;
+  text-align: center;    /* ✅ text alignment */
+}
+.ring-label {
+  margin-top: 8px;       /* cleaner than negative margin */
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* ensures perfect centering */
+}
+.chart-card {
+  padding: 1.25rem 1rem 1.5rem; /* more bottom breathing */
+}
+
+.trend-chart-wrapper {
+  padding-left: 4px;  /* prevents left cut */
+}
+
+/* ============================================================
+   🔥 ANALYTICS GRAPH PERFECT FIT (MATCHING PREDICTION STYLE)
+   ============================================================ */
+
+.chart-card {
+  padding: 1.25rem 1rem 1.75rem !important; /* extra bottom breathing */
+  overflow: hidden;
+}
+
+/* Graph wrapper control */
+.trend-chart-wrapper {
+  width: 100%;
+  overflow: hidden;
+  padding-left: 6px;   /* fix left cut */
+  padding-right: 6px;
+  padding-bottom: 10px; /* space for X-axis */
+}
+
+/* Recharts container strict fit */
+.recharts-responsive-container {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* 🔥 X-axis spacing fix (core fix) */
+.recharts-cartesian-axis.recharts-xAxis {
+  transform: translateY(6px); /* push labels down */
+}
+
+/* X-axis label styling */
+.recharts-cartesian-axis-tick-value {
+  font-size: 11px !important;
+  fill: #94a3b8 !important;
+}
+
+/* Prevent clipping */
+.recharts-cartesian-axis {
+  overflow: visible !important;
+}
+
+/* Optional: soften grid alignment */
+.recharts-cartesian-grid line {
+  opacity: 0.6;
+}
+/* 🔥 SHIFT CHART LEFT (BALANCED FIX) */
+
+.trend-chart-wrapper {
+  padding-left: 0px !important;   /* remove extra push */
+  padding-right: 0px;
+}
+
+/* Move actual SVG chart slightly left */
+.recharts-wrapper {
+  transform: translateX(-8px);  /* 👈 controlled left shift */
+}
+
+/* Keep axis safe (prevent cut) */
+.recharts-cartesian-axis.yAxis {
+  transform: translateX(4px);
+}
+
+}
+
+/* ----------- EXTRA SMALL DEVICES ----------- */
+@media (max-width: 380px) {
+  .header-titles h1 {
+    font-size: 1.1rem;
+  }
+
+  .rings-grid {
+    grid-template-columns: 1fr;
+  }
+}

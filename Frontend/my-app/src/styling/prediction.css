@@ -1,0 +1,624 @@
+/* ============================================================
+   GLOBAL VARIABLES
+============================================================ */
+:root {
+  --primary-purple: #6C5DD3;
+  --bg-light: #F7F8FC;
+  --card-bg: #FFFFFF;
+  --text-dark: #1B212D;
+  --text-grey: #9295A3;
+  --accent-green: #00D19D;
+  --accent-red: #FF6B6B;
+  --accent-orange: #FFB800;
+  --font-family: 'Poppins', sans-serif;
+}
+
+/* ============================================================
+   BASE STYLES
+============================================================ */
+body {
+  background-color: var(--bg-light);
+  font-family: var(--font-family);
+  color: var(--text-dark);
+}
+
+.prediction-container {
+  padding: 30px;
+  max-width: 1480px;
+  margin: 0 auto;
+}
+
+/* ============================================================
+   PAGE HEADER
+============================================================ */
+.page-header {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page-title {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.page-subtitle {
+  font-size: 14px;
+  color: var(--text-grey);
+  margin-top: 4px;
+}
+
+/* User profile mock */
+.user-profile-badge {
+  background: white;
+  border-radius: 50%;
+  padding: 3px;
+  border: 2px solid #eee;
+}
+
+.user-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--primary-purple);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+/* ============================================================
+   CARD COMPONENT
+============================================================ */
+.card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0px 5px 20px rgba(0,0,0,0.03);
+  margin-bottom: 24px;
+  transition: 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   SUMMARY GRID
+============================================================ */
+.summary-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 25px;
+}
+
+/* HERO PREDICTION CARD */
+.hero-prediction-card {
+  background: linear-gradient(135deg, #6C5DD3 0%, #8B7EF8 100%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 28px;
+}
+
+.hero-label {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.hero-amount {
+  font-size: 46px;
+  font-weight: 700;
+  margin: 10px 0;
+}
+
+.trend-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255,255,255,0.25);
+  padding: 7px 14px;
+  border-radius: 14px;
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+/* Last Month Comparison Card */
+.last-month-card {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ============================================================
+   CONFIDENCE BAR
+============================================================ */
+.confidence-bar-bg {
+  width: 100%;
+  height: 7px;
+  background: #eee;
+  border-radius: 10px;
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+.confidence-bar-fill {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.5s ease-out;
+}
+
+/* ============================================================
+   CHART STYLES
+============================================================ */
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.chart-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.chart-select {
+  padding: 6px 12px;
+  border-radius: 10px;
+  border: 1px solid #e4e4e4;
+  color: #666;
+  outline: none;
+}
+
+/* ============================================================
+   INSIGHT FLAGS
+============================================================ */
+.insight-box {
+  padding: 16px;
+  border-radius: 12px;
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 15px;
+}
+
+.insight-warning {
+  background: #FFF5F5;
+  color: var(--accent-red);
+  border-left: 4px solid var(--accent-red);
+}
+
+.insight-success {
+  background: #EFFFF8;
+  color: var(--accent-green);
+  border-left: 4px solid var(--accent-green);
+}
+
+/* ============================================================
+   LOADING SCREEN
+============================================================ */
+.prediction-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  font-size: 20px;
+  color: var(--primary-purple);
+  font-weight: 600;
+}
+
+/* ============================================================
+   SIDEBAR / CONTENT LAYOUT
+============================================================ */
+.dashboard-layout {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #F7F8FC;
+}
+
+.main-content {
+  flex: 1;
+  overflow-y: auto;
+  height: 100vh;
+  padding-bottom: 40px;
+}
+
+/* ============================================================
+   GLOBAL VARIABLES
+============================================================ */
+:root {
+  --primary-purple: #6C5DD3;
+  --bg-light: #F7F8FC;
+  --card-bg: #FFFFFF;
+  --text-dark: #1B212D;
+  --text-grey: #9295A3;
+  --accent-green: #00D19D;
+  --accent-red: #FF6B6B;
+  --accent-orange: #FFB800;
+  --font-family: 'Poppins', sans-serif;
+}
+
+/* ============================================================
+   BASE STYLES
+============================================================ */
+body {
+  background-color: var(--bg-light);
+  font-family: var(--font-family);
+  color: var(--text-dark);
+}
+
+.prediction-container {
+  padding: 30px;
+  max-width: 1480px;
+  margin: 0 auto;
+}
+
+/* ============================================================
+   PAGE HEADER
+============================================================ */
+.page-header {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page-title {
+  margin-top: -10px;
+  padding-left: 25px;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.page-subtitle {
+  font-size: 14px;
+  padding-left: 25px;
+  color: var(--text-grey);
+  margin-top: 4px;
+}
+
+/* User profile mock */
+.user-profile-badge {
+  background: white;
+  border-radius: 50%;
+  padding: 3px;
+  border: 2px solid #eee;
+}
+
+.user-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--primary-purple);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+/* ============================================================
+   CARD COMPONENT
+============================================================ */
+.card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0px 5px 20px rgba(0,0,0,0.03);
+  margin-bottom: 24px;
+  transition: 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   SUMMARY GRID
+============================================================ */
+.summary-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 25px;
+}
+
+/* HERO PREDICTION CARD */
+.hero-prediction-card {
+  background: linear-gradient(135deg, #6C5DD3 0%, #8B7EF8 100%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 28px;
+}
+
+.hero-label {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.hero-amount {
+  font-size: 46px;
+  font-weight: 700;
+  margin: 10px 0;
+}
+
+.trend-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255,255,255,0.25);
+  padding: 7px 14px;
+  border-radius: 14px;
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+/* Last Month Comparison Card */
+.last-month-card {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ============================================================
+   CONFIDENCE BAR
+============================================================ */
+.confidence-bar-bg {
+  width: 100%;
+  height: 7px;
+  background: #eee;
+  border-radius: 10px;
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+.confidence-bar-fill {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.5s ease-out;
+}
+
+/* ============================================================
+   CHART STYLES
+============================================================ */
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.chart-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.chart-select {
+  padding: 6px 12px;
+  border-radius: 10px;
+  border: 1px solid #e4e4e4;
+  color: #666;
+  outline: none;
+}
+
+/* ============================================================
+   INSIGHT FLAGS
+============================================================ */
+.insight-box {
+  padding: 16px;
+  border-radius: 12px;
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 15px;
+}
+
+.insight-warning {
+  background: #FFF5F5;
+  color: var(--accent-red);
+  border-left: 4px solid var(--accent-red);
+}
+
+.insight-success {
+  background: #EFFFF8;
+  color: var(--accent-green);
+  border-left: 4px solid var(--accent-green);
+}
+
+/* ============================================================
+   LOADING SCREEN
+============================================================ */
+.prediction-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  font-size: 20px;
+  color: var(--primary-purple);
+  font-weight: 600;
+}
+
+/* ============================================================
+   SIDEBAR / CONTENT LAYOUT
+============================================================ */
+.dashboard-layout {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #F7F8FC;
+}
+
+.main-content {
+  flex: 1;
+  overflow-y: auto;
+  height: 100vh;
+  padding-bottom: 40px;
+}
+/* ============================================================
+   🚀 FINAL PREDICTION MOBILE SYSTEM (CLEAN + COMPLETE)
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  /* =========================
+     1. GLOBAL LAYOUT FIX
+  ========================= */
+  .prediction-container {
+    padding: 12px !important;
+    margin: 0 !important;
+    width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
+  .main-content {
+    padding-top: 10px !important;
+    overflow-x: hidden !important;
+  }
+
+  /* =========================
+     2. HEADER FIX
+  ========================= */
+  .page-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 4px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .page-title {
+    font-size: 1.4rem !important;
+    padding-left: 50px !important; /* hamburger space */
+    margin: 0 !important;
+  }
+
+  .page-subtitle {
+    display: none !important;
+  }
+
+  /* =========================
+     3. SUMMARY GRID (CARDS)
+  ========================= */
+  .summary-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .card {
+    padding: 14px !important;
+    border-radius: 16px !important;
+  }
+
+  /* HERO CARD */
+  .hero-amount {
+    font-size: 1.8rem !important;
+  }
+
+  .trend-badge {
+    font-size: 12px !important;
+    padding: 6px 10px !important;
+  }
+
+  /* =========================
+     4. CHART CARD FIX (MAIN)
+  ========================= */
+  .card .chart-header {
+    margin-bottom: 10px !important;
+  }
+
+  .chart-title {
+    font-size: 1rem !important;
+  }
+
+  .chart-select {
+    font-size: 12px !important;
+    padding: 4px 8px !important;
+  }
+
+  /* 🔥 GRAPH CONTAINER FIX */
+  .card > div[style] {
+    height: 240px !important;   /* reduced from 350 */
+    width: 100% !important;
+    overflow: hidden !important;
+  }
+
+  /* 🔥 RECHARTS FIX (CRITICAL) */
+  .recharts-responsive-container {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .recharts-surface {
+    width: 100% !important;
+  }
+
+  /* X AXIS FIX */
+  .recharts-cartesian-axis-tick-value {
+    font-size: 10px !important;
+  }
+
+  /* TOOLTIP FIX */
+  .recharts-tooltip-wrapper {
+    font-size: 12px !important;
+  }
+
+  /* =========================
+     5. INSIGHT SECTION
+  ========================= */
+  .insight-box {
+    padding: 12px !important;
+    font-size: 13px !important;
+    gap: 10px !important;
+  }
+
+  /* =========================
+     6. CONFIDENCE CARD
+  ========================= */
+  .confidence-bar-bg {
+    height: 6px !important;
+  }
+
+  /* =========================
+     7. REMOVE OVERFLOW ROOT
+  ========================= */
+  body, html {
+    overflow-x: hidden !important;
+  }
+  /* =========================
+   🔥 X-AXIS FINAL FIX
+========================= */
+
+/* Give chart breathing space at bottom */
+.card > div[style] {
+  padding-bottom: 10px !important;
+}
+
+/* Fix X-axis label visibility */
+.recharts-xAxis .recharts-cartesian-axis-tick {
+  transform: translateY(8px); /* push labels down */
+}
+
+/* Improve readability */
+.recharts-cartesian-axis-tick-value {
+  font-size: 11px !important;
+  fill: #94a3b8 !important;
+}
+
+/* Prevent clipping */
+.recharts-cartesian-axis {
+  overflow: visible !important;
+}
+
+}

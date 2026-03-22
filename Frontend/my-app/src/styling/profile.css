@@ -1,0 +1,392 @@
+/* =========================================
+   Profile Styling - Modern & Structure Optimized
+   ========================================= */
+
+:root {
+  /* COLOR INTEGRITY PRESERVED */
+  --primary-color: #4F46E5;       /* Indigo Main */
+  --primary-hover: #4338CA;       /* Darker Indigo */
+  --bg-color: #F3F4F6;            /* Light Grey Bg */
+  --card-bg: #FFFFFF;             /* White Card */
+  --text-dark: #1F2937;           /* Main Text */
+  --text-medium: #6B7280;         /* Sub Text */
+  --border-color: #E5E7EB;        /* Borders */
+  --input-bg: #F9FAFB;            /* Input Fields */
+  --radius: 12px;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* --- Animations --- */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+/* --- Layout --- */
+.profile-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding: 0 0.5rem;
+}
+
+.header-text h1 {
+  font-size: 1.5rem;
+  color: var(--text-dark);
+  margin: 0;
+  font-weight: 700;
+}
+
+.header-text p {
+  color: var(--text-medium);
+  font-size: 0.9rem;
+  margin: 4px 0 0 0;
+}
+
+.back-btn {
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-medium);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.back-btn:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+/* --- Card Styles --- */
+.profile-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border-color);
+}
+
+.card-header h3 {
+  margin: 0 0 0.5rem 0;
+  color: var(--text-dark);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.card-header p {
+  margin: 0 0 1.5rem 0;
+  color: var(--text-medium);
+  font-size: 0.875rem;
+}
+
+/* --- Identity Section --- */
+.identity-section {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(135deg, var(--card-bg) 60%, #EEF2FF 100%);
+}
+
+.avatar-circle {
+  width: 100px;
+  height: 100px;
+  background: #E0E7FF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem auto;
+  position: relative;
+  color: var(--primary-color);
+  font-size: 3.5rem;
+}
+
+.edit-avatar-badge {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: var(--primary-color);
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  border: 3px solid var(--card-bg);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.edit-avatar-badge:hover { transform: scale(1.1); }
+
+.identity-info h2 { margin: 0; font-size: 1.25rem; font-weight: 700; color: var(--text-dark); }
+.email-badge {
+  display: inline-block;
+  background: var(--bg-color);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: var(--text-medium);
+  margin-top: 0.5rem;
+}
+
+/* --- Forms --- */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.input-group { display: flex; flex-direction: column; gap: 0.5rem; }
+
+.input-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.input-group input, .input-group select {
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--input-bg);
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-group input:focus, .input-group select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+  background: #fff;
+}
+
+.disabled-group input {
+  background-color: #F3F4F6;
+  color: #9CA3AF;
+  cursor: not-allowed;
+}
+
+.helper-text { font-size: 0.75rem; color: var(--text-medium); margin-top: 2px; }
+
+/* --- Preference Cards --- */
+.preferences-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 0.75rem;
+}
+
+.pref-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--input-bg);
+  user-select: none;
+}
+
+.pref-card input { display: none; } /* Hide Checkbox */
+
+.pref-name {
+  font-weight: 500;
+  color: var(--text-medium);
+  font-size: 0.9rem;
+}
+
+/* Active State */
+.pref-card.active {
+  background-color: #EEF2FF;
+  border-color: var(--primary-color);
+  box-shadow: 0 2px 4px rgba(79, 70, 229, 0.1);
+}
+
+.pref-card.active .pref-name {
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+/* --- Actions --- */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding-bottom: 2rem;
+}
+
+.save-btn {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: background-color 0.2s;
+}
+
+.save-btn:hover:not(:disabled) {
+  background-color: var(--primary-hover);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+}
+
+.save-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.cancel-btn {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  color: var(--text-dark);
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.cancel-btn:hover { background-color: #E5E7EB; }
+
+/* Mobile */
+@media (max-width: 768px) {
+  .form-actions { flex-direction: column-reverse; }
+  .save-btn, .cancel-btn { width: 100%; justify-content: center; }
+}
+
+/* ============================================================
+   PROFILE PAGE MASTER CURE: ELITE MOBILE SYSTEM
+   ============================================================ */
+
+@media (max-width: 768px) {
+    /* 1. Global Container Logic */
+    .app-container { 
+        flex-direction: column !important; 
+        overflow-x: hidden !important;
+    }
+    
+    .main-content {
+        padding: 1rem !important;
+        padding-top: 85px !important; /* Space for Hamburger */
+        width: 100vw !important;
+        box-sizing: border-box;
+    }
+
+    /* 2. Header & Alignment Sync */
+    .page-header {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        margin-left: 0 !important; /* Reset */
+        gap: 12px !important;
+        margin-bottom: 1.5rem !important;
+    }
+
+    .header-text h1 {
+        font-size: 1.3rem !important;
+        margin-left: 55px !important; /* Aligns title with burger icon */
+    }
+
+    .header-text p { display: none; } /* Hide subtext for line clarity */
+
+    .back-btn {
+        position: absolute;
+        right: 15px; /* Pinned to right for easy thumb reach */
+        top: 15px;
+        width: 38px !important;
+        height: 38px !important;
+    }
+
+    /* 3. Card & Identity Refinement */
+    .profile-wrapper {
+        padding: 0 !important;
+        width: 100%;
+    }
+
+    .profile-card {
+        padding: 1.5rem 1rem !important;
+        margin-bottom: 1rem !important;
+        border-radius: 16px !important;
+    }
+
+    .avatar-circle {
+        width: 85px !important;
+        height: 85px !important;
+        font-size: 2.8rem !important;
+    }
+
+    .identity-info h2 {
+        font-size: 1.1rem !important;
+    }
+
+    /* 4. Form Scaling (Stacking inputs) */
+    .form-grid {
+        grid-template-columns: 1fr !important; /* Force vertical stack */
+        gap: 1.25rem !important;
+    }
+
+    .input-group label {
+        font-size: 0.8rem !important;
+    }
+
+    .input-group input, 
+    .input-group select {
+        height: 48px !important; /* Finger-friendly height */
+        font-size: 16px !important; /* Prevents iOS auto-zoom bug */
+    }
+
+    /* 5. Preferences Grid Adjustment */
+    .preferences-grid {
+        grid-template-columns: repeat(2, 1fr) !important; /* 2 columns for better fit */
+        gap: 10px !important;
+    }
+
+    .pref-card {
+        padding: 0.75rem !important;
+    }
+
+    /* 6. Footer Action Alignment */
+    .form-actions {
+        flex-direction: column-reverse !important;
+        gap: 12px !important;
+        padding: 0 0.5rem 3rem 0.5rem !important;
+    }
+
+    .save-btn, .cancel-btn {
+        width: 100% !important;
+        height: 52px !important;
+        justify-content: center !important;
+        font-size: 1rem !important;
+    }
+}
+
+/* Extra tight fix for small devices */
+@media (max-width: 380px) {
+    .header-text h1 { font-size: 1.1rem !important; }
+    .preferences-grid { grid-template-columns: 1fr !important; }
+}

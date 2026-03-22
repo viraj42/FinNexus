@@ -1,0 +1,420 @@
+/* ---- Filter Section Styling ---- */
+.filter-section {
+    margin-top: 25px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.filter-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.filter-header h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1e293b; /* Dark slate */
+    margin: 0;
+}
+
+.filter-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+}
+
+.filter-select, 
+.filter-input {
+    padding: 10px 14px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    background-color: #f8fafc;
+    font-size: 14px;
+    color: #475569;
+    outline: none;
+    transition: all 0.2s;
+    min-width: 150px;
+}
+
+.filter-select:focus,
+.filter-input:focus {
+    border-color: #3b82f6;
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Specific styling for the Date Group to look like a single unit */
+.filter-group.date-group {
+    display: flex;
+    align-items: center;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 0 10px;
+}
+
+.filter-group.date-group .filter-input {
+    border: none;
+    background: transparent;
+    padding: 10px 5px;
+    box-shadow: none;
+    min-width: 130px;
+}
+
+.filter-group.date-group .input-icon {
+    color: #94a3b8;
+    display: flex;
+    align-items: center;
+}
+
+.filter-group.date-group .separator {
+    color: #94a3b8;
+    font-weight: bold;
+    margin: 0 5px;
+}
+
+/* Hover effects */
+.filter-select:hover,
+.filter-group.date-group:hover {
+    border-color: #cbd5e1;
+}
+
+
+/* ============================================================
+   ✅ TRANSACTIONS MOBILE MASTER (CLEAN + MERGED)
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  /* -------- HEADER -------- */
+  .top-navbar {
+    position: relative;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px !important;
+  }
+
+  .header-titles {
+    margin-left: 52px !important; /* space for hamburger */
+  }
+
+  .header-titles h1 {
+    font-size: 1.3rem !important;
+  }
+
+  .header-titles p {
+    display: none;
+  }
+
+  .header-controls {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .user-profile {
+    background: transparent !important;
+    padding: 0 !important;
+  }
+
+  .user-profile img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .user-info {
+    display: none !important;
+  }
+
+  /* -------- STATS -------- */
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .stat-card {
+    flex-direction: row !important;
+    padding: 1rem !important;
+    min-height: 70px !important;
+  }
+
+  /* -------- FILTERS -------- */
+  .filter-section {
+    padding: 15px !important;
+    margin-top: 15px !important;
+  }
+
+  .filter-controls {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .filter-group.date-group {
+    display: grid !important;
+    grid-template-columns: 1fr 20px 1fr !important;
+    align-items: center;
+    padding: 5px 10px !important;
+    width: 100% !important;
+  }
+
+  .date-group .filter-input {
+    min-width: 0 !important;
+    font-size: 13px !important;
+  }
+
+  .filter-input,
+  .filter-select {
+    width: 100% !important;
+    height: 45px;
+  }
+
+  /* -------- TABLE -------- */
+  .table-responsive {
+    overflow-x: hidden !important;
+  }
+
+  table {
+    width: 100% !important;
+    table-layout: fixed;
+  }
+
+  /* Hide extra columns */
+  th:nth-child(2), td:nth-child(2),
+  th:nth-child(3), td:nth-child(3),
+  th:nth-child(4), td:nth-child(4),
+  th:nth-child(5), td:nth-child(5) {
+    display: none !important;
+  }
+
+  th:first-child,
+  td:first-child {
+    width: 60%;
+  }
+
+  th:last-child,
+  td:last-child {
+    width: 40%;
+    text-align: right;
+  }
+
+  /* -------- SECTION HEADER -------- */
+  .table-section .section-header {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px;
+  }
+
+  /* -------- 🔥 SEARCH + BUTTON FIX (MAIN REQUIREMENT) -------- */
+  .section-actions {
+    display: flex;
+    flex-direction: column;   /* ✅ stack */
+    gap: 10px;
+    width: 100%;
+  }
+
+  .table-search {
+    width: 100%;             /* ✅ full row */
+    height: 44px;
+  }
+
+  .table-search input {
+    width: 100%;
+  }
+
+  .primary-btn {
+    width: 100%;             /* ✅ full row button */
+    height: 44px;
+    justify-content: center;
+    font-size: 0.9rem;
+  }
+
+  /* -------- MODAL -------- */
+  .modal-container {
+    width: 92% !important;
+    max-height: 85vh;
+    padding: 20px !important;
+    border-radius: 20px !important;
+    overflow-y: auto;
+  }
+
+  .txn-form {
+    gap: 12px !important;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .type-select {
+    margin-bottom: 10px;
+  }
+
+  .table-section .section-actions {
+    display: flex !important;
+    flex-direction: column !important;   /* ✅ force stack */
+    gap: 12px !important;
+    width: 100% !important;
+  }
+
+  .table-section .table-search {
+    width: 100% !important;             /* ✅ full row */
+    flex: none !important;
+  }
+
+  .table-section .primary-btn {
+    width: 100% !important;             /* ✅ full row button */
+    height: 44px;
+    justify-content: center;
+    flex: none !important;
+  }
+
+  /* 🔥 1. REMOVE LEFT ICON COMPLETELY */
+  .td-name .icon-box {
+    display: none !important;
+  }
+
+  /* 🔥 2. ALIGN TEXT NICELY AFTER REMOVAL */
+  .td-name {
+    gap: 0 !important;
+  }
+
+  /* 🔥 3. REDUCE NAME CELL PADDING */
+  td:first-child {
+    padding-left: 10px !important;
+  }
+
+  /* 🔥 4. GIVE MORE SPACE TO ACTIONS */
+  .action-cell {
+    width: 120px !important;
+  }
+
+  /* 🔥 5. TIGHTEN ACTION BUTTONS */
+  .action-strip {
+    gap: 6px !important;
+  }
+
+  .action-btn {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  /* 🔥 6. ENSURE ROW DOES NOT OVERFLOW */
+  table {
+    table-layout: fixed !important;
+  }
+
+  td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* 🔥 7. BALANCE NAME vs ACTION SPACE */
+  th:first-child,
+  td:first-child {
+    width: 55% !important;
+  }
+
+  th:last-child,
+  td:last-child {
+    width: 45% !important;
+  }
+}
+
+.action-cell {
+    text-align: center;
+}
+
+.action-strip {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.action-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: #f1f5f9;
+    transition: all 0.2s;
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Specific colors */
+.action-btn.view {
+    color: #334155;
+}
+
+.action-btn.edit {
+    color: #6C5DD3;
+}
+
+.action-btn.delete {
+    color: #dc2626;
+}
+
+.action-cell {
+    text-align: center;
+}
+
+.action-strip {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.action-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: #f1f5f9;
+    transition: all 0.2s;
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Specific colors */
+.action-btn.view {
+    color: #334155;
+}
+
+.action-btn.edit {
+    color: #6C5DD3;
+}
+
+.action-btn.delete {
+    color: #dc2626;
+}
+
+/* 🔥 FIX: Restore modal normal size */
+.modal-container input,
+.modal-container select,
+.modal-container textarea {
+  font-size: 0.95rem !important;
+  padding: 0.7rem !important;
+}

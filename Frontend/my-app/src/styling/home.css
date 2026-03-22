@@ -1,0 +1,497 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary-color: #6C5DD3;
+  --primary-hover: #594bb5;
+  --bg-color: #F5F7FB;
+  --card-bg: #fff;
+  --text-dark: #11142D;
+  --text-grey: #808191;
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --shadow-soft: 0 12px 40px rgba(0,0,0,0.04);
+  --shadow-hover: 0 20px 60px rgba(108,93,211,0.15);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: var(--bg-color);
+  font-family: Poppins, sans-serif;
+  color: var(--text-dark);
+  overflow-x: hidden;
+}
+
+.home-wrapper {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* ------------------- NAVBAR ------------------- */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 0.7rem 2.5rem; /* Reduced Height */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(245,247,251,0.85);
+  backdrop-filter: blur(15px);
+  z-index: 100;
+  height: 60px; 
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.btn-login,
+.btn-signup {
+  padding: 0.55rem 1.6rem; /* Slightly smaller buttons */
+  border-radius: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.btn-login {
+  border: 2px solid rgba(108,93,211,0.25);
+  color: var(--primary-color);
+}
+.btn-login:hover {
+  border-color: var(--primary-color);
+  background: rgba(108,93,211,0.08);
+}
+
+.btn-signup {
+  background: var(--primary-color);
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(108,93,211,0.35);
+}
+.btn-signup:hover { background: var(--primary-hover); transform: translateY(-2px); }
+
+
+/* ------------------- HERO ------------------- */
+.hero-section {
+  min-height: 100vh;
+  padding-top: 7.5rem; /* Adjusted for smaller navbar */
+  padding-bottom: 3rem;
+  text-align: center;
+
+  background: radial-gradient(
+    circle at 50% 20%,
+    rgba(108,93,211,0.12) 0%,
+    var(--bg-color) 70%
+  );
+}
+
+.hero-badge {
+  font-size: 0.9rem;
+  background: rgba(108,93,211,0.1);
+  padding: 8px 18px;
+  border-radius: 12px;
+  display: inline-block;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.hero-title {
+  font-size: 3.6rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1.2rem;
+}
+
+.hero-title span { color: var(--primary-color); }
+
+.hero-subtitle {
+  max-width: 600px;
+  margin: 0 auto 3rem auto;
+  color: var(--text-grey);
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+.cta-button {
+  padding: 1rem 2.6rem;
+  font-weight: 600;
+  background: var(--primary-color);
+  border-radius: 16px;
+  color: #fff;
+  border: none;
+  transition: .3s;
+  box-shadow: 0 8px 25px rgba(108,93,211,0.4);
+  cursor:pointer;
+}
+.cta-button:hover { background: var(--primary-hover); transform: translateY(-3px); }
+
+
+/* ------------------- FEATURE CARDS ------------------- */
+.features-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 5rem 1.5rem 7rem 1.5rem;
+}
+
+.scroll-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: 3rem;
+  margin-bottom: 5rem;
+  display: flex;
+  align-items: center;
+  box-shadow: var(--shadow-soft);
+  opacity: 0;
+  transition: opacity 1.2s ease-out,
+              transform 1.2s cubic-bezier(0.22,0.61,0.36,1);
+}
+
+.scroll-card:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: var(--shadow-hover);
+}
+
+.card-left { transform: translateX(-150px); }
+.card-right { transform: translateX(150px); flex-direction: row-reverse; }
+
+.scroll-card.visible { transform: translateX(0); opacity: 1; }
+
+/* ------------------- CONTENT ------------------- */
+.card-content { flex: 1; padding-right: 2rem; }
+.card-right .card-content { padding-right: 0; padding-left: 2rem; }
+
+.card-title {
+  font-size: 1.9rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.card-desc {
+  color: var(--text-grey);
+  line-height: 1.7;
+  font-size: 1.06rem;
+}
+
+/* ------------------- IMAGES / VISUAL ------------------- */
+.card-visual {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.card-visual img {
+  width: 100%;
+  max-height: 260px;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+  box-shadow: inset 0 0 12px rgba(0,0,0,0.05);
+}
+
+
+/* ------------------- ICONS ------------------- */
+.icon-circle {
+  width: 55px;
+  height: 55px;
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  margin-bottom: 1.2rem;
+}
+
+.purple { background: rgba(108,93,211,0.1); color: var(--primary-color); }
+.yellow { background: rgba(255,187,56,0.15); color: #FFBB38; }
+.red    { background: rgba(255,91,91,0.15); color: #FF5B5B; }
+
+
+/* ------------------- FOOTER ------------------- */
+.footer {
+  text-align:center;
+  padding: 3rem;
+  color: #888;
+  font-size: 0.9rem;
+}
+
+
+/* ------------------- RESPONSIVE ------------------- */
+@media (max-width: 768px) {
+  .hero-title { font-size: 2.8rem; }
+
+  .scroll-card { flex-direction: column; text-align:center; }
+  .card-right { flex-direction: column; }
+
+  .card-content {
+    padding-right:0 !important;
+    padding-left:0 !important;
+    margin-bottom:1.5rem;
+  }
+
+  .card-left, .card-right { transform: translateY(50px); }
+  .scroll-card.visible { transform: translateY(0); }
+}
+
+/* ------------------- MOBILE OVERRIDES (STRICT) ------------------- */
+@media (max-width: 768px) {
+  
+  /* 1. Navbar Adjustments */
+  .navbar {
+    padding: 10px 15px !important; /* Reduce horizontal padding */
+    height: 60px;
+  }
+
+  .logo {
+    font-size: 1.2rem !important;
+  }
+
+  .nav-buttons {
+    gap: 0.5rem;
+  }
+
+  .btn-login, .btn-signup {
+    padding: 0.4rem 0.8rem !important;
+    font-size: 0.85rem;
+    border-radius: 10px;
+  }
+
+  /* 2. Hero Section Scaling */
+  .hero-section {
+    padding-top: 6rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .hero-title {
+    font-size: 2.2rem !important; /* Scale down large text */
+    line-height: 1.2;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem !important;
+    padding: 0 10px;
+    margin-bottom: 2rem;
+  }
+
+  /* 3. Feature Cards Layout */
+  .features-container {
+    padding: 2rem 1rem 4rem 1rem;
+  }
+
+  .scroll-card {
+    flex-direction: column !important; /* Stack image and text vertically */
+    padding: 2rem 1.5rem !important;
+    margin-bottom: 3rem;
+    text-align: center;
+    overflow: hidden; /* Prevent horizontal scroll from images */
+  }
+
+  /* Resetting the horizontal slide for mobile to prevent layout shift */
+  .card-left, .card-right { 
+    transform: translateY(40px); /* Use Vertical slide instead of horizontal */
+    flex-direction: column !important; 
+  }
+  
+  .scroll-card.visible { 
+    transform: translateY(0); 
+  }
+
+  /* 4. Content & Spacing */
+  .card-content {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-title {
+    font-size: 1.5rem !important;
+  }
+
+  .card-desc {
+    font-size: 0.95rem !important;
+  }
+
+  .icon-circle {
+    margin: 0 auto 1rem auto;
+  }
+
+  /* 5. Image Handling */
+  .card-visual {
+    width: 100%;
+  }
+
+  .card-visual img {
+    max-height: 200px !important; /* Keep images from becoming too tall */
+    width: 100%;
+    object-fit: contain; /* Ensure images aren't cropped awkwardly */
+  }
+
+  /* 6. Footer */
+  .footer {
+    padding: 2rem 1rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Extra small devices (Phones) */
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.8rem !important;
+  }
+  
+  .cta-button {
+    width: 100%; /* Full width button for better UX on tiny screens */
+    padding: 1rem;
+  }
+}
+
+/* ============================================================
+   PIXEL-PERFECT NAVBAR ALIGNMENT (MOBILE)
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .navbar {
+    /* Force absolute center alignment for all children */
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important; 
+    
+    padding: 0 15px !important; /* Horizontal breathing room */
+    height: 70px !important;    /* Fixed height for stability */
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .logo {
+    /* Ensure logo doesn't have weird margins or line-heights */
+    font-size: 1.3rem !important;
+    font-weight: 700 !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    line-height: 1 !important;
+  }
+
+  .nav-buttons {
+    /* Container for buttons must match the navbar flex */
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important; 
+    gap: 8px !important;
+    margin: 0 !important;
+    height: 100% !important; /* Match parent height for centering */
+  }
+
+  .btn-login, .btn-signup {
+    /* Unified sizing to ensure they sit on the same line */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    
+    padding: 0 12px !important;
+    height: 36px !important;    /* Exact height for both buttons */
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    margin: 0 !important;
+    white-space: nowrap !important;
+  }
+  
+  /* Fix for the Link wrappers which sometimes add hidden height */
+  .nav-buttons a {
+    display: flex !important;
+    align-items: center !important;
+    text-decoration: none !important;
+  }
+}
+
+/* Extra small device adjustment */
+@media (max-width: 360px) {
+  .logo { font-size: 1.1rem !important; }
+  .btn-login, .btn-signup { padding: 0 8px !important; font-size: 0.75rem !important; }
+}
+
+/* ------------------- ELITE NAVBAR ALIGNMENT (UNIVERSAL) ------------------- */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 0 40px; /* Standard Desktop Padding */
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important; /* Cures vertical drift */
+  background: rgba(245,247,251,0.85);
+  backdrop-filter: blur(15px);
+  z-index: 100;
+  height: 60px; /* Locked Height */
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  display: flex !important;
+  align-items: center !important;
+  margin: 0 !important;
+  line-height: 1 !important;
+}
+
+.nav-buttons {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important; 
+  gap: 0.8rem;
+  height: 100%;
+}
+
+/* Fix for Link wrappers in React Router */
+.nav-buttons a {
+  display: flex !important;
+  align-items: center !important;
+  text-decoration: none !important;
+  height: auto;
+}
+
+.btn-login,
+.btn-signup {
+  padding: 0.55rem 1.6rem;
+  border-radius: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .3s;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 40px; /* Locked Height for Buttons */
+}
+
+/* ------------------- MOBILE OVERRIDES ------------------- */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 15px !important;
+    height: 70px !important; /* Slightly taller for mobile touch targets */
+  }
+
+  .logo {
+    font-size: 1.3rem !important;
+  }
+
+  .btn-login, .btn-signup {
+    padding: 0 12px !important;
+    height: 36px !important; /* Compact but centered */
+    font-size: 0.8rem !important;
+    border-radius: 10px !important;
+  }
+}
