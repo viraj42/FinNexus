@@ -1,0 +1,43 @@
+config:
+  target: "https://finnexus-1.onrender.com"
+  http:
+    timeout: 30
+  phases:
+    - name: "Warm-up"
+      duration: 30
+      arrivalRate: 5
+
+    - name: "Normal Load"
+      duration: 60
+      arrivalRate: 10
+
+    - name: "Stress Load"
+      duration: 60
+      arrivalRate: 20
+
+  defaults:
+    headers:
+      Content-Type: "application/json"
+
+scenarios:
+  - name: "Login + Prediction Flow"
+    flow:
+
+      # 🔐 Step 1: Login
+      - post:
+          url: "/api/user/login"
+          json:
+            email: "virajpadawal4286@gmail.com"
+            password: "Viraj123"
+          capture:
+            - json: "$.token"
+              as: "authToken"
+
+      # 🧠 Step 2: Call Prediction API
+      - get:
+          url: "/api/budget"
+          headers:
+            Authorization: "Bearer {{ authToken }}"
+
+      # ⏱️ Simulate user think time
+      - think: 2

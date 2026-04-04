@@ -928,3 +928,716 @@ td {
   font-size: 0.95rem !important;
   padding: 0.7rem !important;
 }
+
+
+/* ============================================================
+   PASTE THIS ENTIRE BLOCK AT THE END OF dashboard.css
+   ============================================================ */
+
+/* ── Sidebar bottom controls (role switcher + dark mode btn) ── */
+.sb-bottom-controls {
+  margin-top: auto;
+  padding: 12px 8px 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Plain icon-style button reusing sb-link-item styling */
+.sb-icon-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 12px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+.sb-icon-btn:hover {
+  background: rgba(108, 93, 211, 0.12);
+}
+
+/* Role switcher container */
+.sb-role-switcher {
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(108, 93, 211, 0.08);
+}
+.sb-role-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #94a3b8;
+  margin-bottom: 6px;
+}
+.sb-role-pills {
+  display: flex;
+  gap: 6px;
+}
+.sb-role-pill {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 5px 0;
+  border: 1.5px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  color: #94a3b8;
+  transition: all 0.18s;
+}
+.sb-role-pill:hover {
+  color: #6C5DD3;
+  border-color: #6C5DD3;
+}
+.pill-active-admin {
+  background: #6C5DD3;
+  color: #fff !important;
+  border-color: #6C5DD3 !important;
+}
+.pill-active-viewer {
+  background: #00CFE8;
+  color: #fff !important;
+  border-color: #00CFE8 !important;
+}
+
+/* ── Viewer mode info banner ──────────────────────────────────── */
+.viewer-banner {
+  background: #fff8e1;
+  border-left: 4px solid #f59e0b;
+  color: #92400e;
+  padding: 9px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+/* ================================================================
+   DARK MODE — CSS Variables override
+   Applied when <html class="dark"> is set by AppContext
+   ================================================================ */
+html.dark {
+  /* Core backgrounds */
+  --bg-main:       #0f172a;
+  --bg-card:       #1e293b;
+  --bg-sidebar:    #1e293b;
+  --bg-input:      #334155;
+  --bg-hover:      #2d3f55;
+
+  /* Text */
+  --text-primary:  #f1f5f9;
+  --text-muted:    #94a3b8;
+  --text-heading:  #e2e8f0;
+
+  /* Borders */
+  --border-color:  #334155;
+}
+
+/* Apply dark vars to main surfaces */
+html.dark body,
+html.dark .app-container {
+  background-color: #0f172a;
+  color: #f1f5f9;
+}
+
+html.dark .main-content {
+  background-color: #0f172a;
+}
+
+/* Cards */
+html.dark .stat-card,
+html.dark .section-card,
+html.dark .budget-stat-card,
+html.dark .ring-card,
+html.dark .modal-container,
+html.dark .settings-card,
+html.dark .profile-card,
+html.dark .category-card,
+html.dark .budget-insight-box {
+  background-color: #1e293b;
+  border-color: #334155;
+  color: #f1f5f9;
+}
+
+/* Sidebar */
+html.dark .sb-container {
+  background-color: #1e293b;
+  border-right-color: #334155;
+}
+html.dark .sb-brand-title,
+html.dark .sb-link-text,
+html.dark .sb-group-header {
+  color: #cbd5e1;
+}
+html.dark .sb-link-item:hover,
+html.dark .sb-icon-btn:hover {
+  background: rgba(108, 93, 211, 0.2);
+}
+html.dark .sb-active {
+  background: rgba(108, 93, 211, 0.25) !important;
+}
+html.dark .sb-role-switcher {
+  background: rgba(108, 93, 211, 0.14);
+}
+html.dark .sb-role-label {
+  color: #64748b;
+}
+html.dark .sb-bottom-controls {
+  border-top-color: #334155;
+}
+
+/* Navbar / header */
+html.dark .top-navbar,
+html.dark .page-header {
+  background-color: #1e293b;
+  border-bottom-color: #334155;
+}
+html.dark .top-navbar h1,
+html.dark .header-titles h1 {
+  color: #f1f5f9;
+}
+html.dark .top-navbar p,
+html.dark .header-titles p {
+  color: #94a3b8;
+}
+
+/* Tables */
+html.dark table {
+  background-color: #1e293b;
+  color: #f1f5f9;
+}
+html.dark thead tr {
+  background-color: #273548;
+}
+html.dark tbody tr:hover {
+  background-color: #273548;
+}
+html.dark th,
+html.dark td {
+  border-color: #334155;
+  color: #cbd5e1;
+}
+
+/* Inputs, selects, textareas */
+html.dark input,
+html.dark select,
+html.dark textarea {
+  background-color: #334155;
+  border-color: #475569;
+  color: #f1f5f9;
+}
+html.dark input::placeholder {
+  color: #64748b;
+}
+
+/* Filter bar */
+html.dark .filter-bar select,
+html.dark .filter-bar input {
+  background-color: #1e293b;
+  border-color: #334155;
+  color: #cbd5e1;
+}
+
+/* Viewer banner in dark mode */
+html.dark .viewer-banner {
+  background: #292112;
+  border-left-color: #d97706;
+  color: #fbbf24;
+}
+
+/* Modal overlay */
+html.dark .modal-overlay {
+  background: rgba(0, 0, 0, 0.65);
+}
+
+/* Category pill */
+html.dark .category-pill {
+  background: #334155;
+  color: #94a3b8;
+}
+
+/* Budget sidebar card */
+html.dark .summary-card {
+  background-color: #1e293b;
+}
+
+/* Recharts grid lines */
+html.dark .recharts-cartesian-grid line {
+  stroke: #334155;
+}
+html.dark .recharts-text {
+  fill: #94a3b8;
+}
+
+/* ============================================================
+   PASTE THIS ENTIRE BLOCK AT THE END OF dashboard.css
+   (Replaces the previous version completely)
+   ============================================================ */
+
+/* ── Sidebar bottom controls ────────────────────────────────── */
+.sb-bottom-controls {
+  margin-top: auto;
+  padding: 12px 8px 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.sb-icon-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 12px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+.sb-icon-btn:hover { background: rgba(108, 93, 211, 0.12); }
+.sb-role-switcher {
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(108, 93, 211, 0.08);
+}
+.sb-role-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #94a3b8;
+  margin-bottom: 6px;
+}
+.sb-role-pills { display: flex; gap: 6px; }
+.sb-role-pill {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 5px 0;
+  border: 1.5px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  color: #94a3b8;
+  transition: all 0.18s;
+}
+.sb-role-pill:hover { color: #6C5DD3; border-color: #6C5DD3; }
+.pill-active-admin  { background: #6C5DD3; color: #fff !important; border-color: #6C5DD3 !important; }
+.pill-active-viewer { background: #00CFE8; color: #fff !important; border-color: #00CFE8 !important; }
+
+/* ── Viewer banner (light mode) ─────────────────────────────── */
+.viewer-banner {
+  background: #fff8e1;
+  border-left: 4px solid #f59e0b;
+  color: #92400e;
+  padding: 9px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+/* ── Filter bar (Transaction page — light mode) ─────────────── */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 12px 16px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  margin-bottom: 4px;
+  align-items: center;
+}
+.filter-bar select,
+.filter-bar input[type="date"] {
+  padding: 7px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 13px;
+  background: #f8fafc;
+  color: #334155;
+  cursor: pointer;
+  outline: none;
+  height: 36px;
+  min-width: 120px;
+  max-width: 180px;
+}
+.filter-bar select:focus,
+.filter-bar input[type="date"]:focus {
+  border-color: #6C5DD3;
+  box-shadow: 0 0 0 2px rgba(108, 93, 211, 0.12);
+}
+
+/* ================================================================
+   DARK MODE  —  <html class="dark">
+   Every rule uses !important to beat specificity of existing CSS
+   ================================================================ */
+
+/* ── Root backgrounds ────────────────────────────────────────── */
+html.dark body,
+html.dark .app-container,
+html.dark .main-content,
+html.dark .dashboard-viewport,
+html.dark .prediction-container,
+html.dark .settings-wrapper,
+html.dark .profile-wrapper,
+html.dark .budget-layout,
+html.dark .budget-left-panel,
+html.dark .budget-sidebar {
+  background-color: #0f172a !important;
+  color: #f1f5f9 !important;
+}
+
+/* ── Top navbar ─────────────────────────────────────────────── */
+html.dark .top-navbar,
+html.dark .page-header {
+  background-color: #1e293b !important;
+  border-bottom: 1px solid #334155 !important;
+}
+html.dark .top-navbar h1,
+html.dark .header-titles h1,
+html.dark .page-title { color: #f1f5f9 !important; }
+html.dark .top-navbar p,
+html.dark .header-titles p,
+html.dark .page-subtitle { color: #94a3b8 !important; }
+
+/* ── User profile pill (top-right) ──────────────────────────── */
+html.dark .user-profile {
+  background-color: #1e293b !important;
+  border: 1px solid #334155 !important;
+}
+html.dark .user-name  { color: #f1f5f9 !important; }
+html.dark .user-email { color: #94a3b8 !important; }
+
+/* ── ALL cards ───────────────────────────────────────────────── */
+html.dark .stat-card,
+html.dark .section-card,
+html.dark .chart-section,
+html.dark .table-section,
+html.dark .budget-stat-card,
+html.dark .ring-card,
+html.dark .settings-card,
+html.dark .profile-card,
+html.dark .category-card,
+html.dark .budget-insight-box,
+html.dark .summary-card,
+html.dark .prediction-container .card,
+html.dark .category-rings-section {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+  color: #f1f5f9 !important;
+}
+
+/* Stat card text layers */
+html.dark .stat-title         { color: #94a3b8 !important; }
+html.dark .stat-value         { color: #f1f5f9 !important; }
+html.dark .stat-sub           { color: #cbd5e1 !important; }
+html.dark .stat-trend.up      { color: #4ade80 !important; }
+html.dark .stat-trend.down-bad { color: #f87171 !important; }
+html.dark .stat-trend.neutral  { color: #94a3b8 !important; }
+
+/* Card headings */
+html.dark .section-card h2,
+html.dark .section-card h3,
+html.dark .chart-summary h3,
+html.dark .card-header h3,
+html.dark .card-header-row h3,
+html.dark .section-title { color: #f1f5f9 !important; }
+html.dark .section-card p,
+html.dark .chart-summary p { color: #94a3b8 !important; }
+
+/* ── Section header divider ─────────────────────────────────── */
+html.dark .section-header { border-bottom: 1px solid #334155 !important; }
+html.dark .section-header h2 { color: #f1f5f9 !important; }
+html.dark .period-selector {
+  background: #273548 !important;
+  color: #cbd5e1 !important;
+  border-color: #334155 !important;
+}
+
+/* ── Tables ──────────────────────────────────────────────────── */
+html.dark table          { background-color: #1e293b !important; color: #f1f5f9 !important; }
+html.dark thead,
+html.dark thead tr       { background-color: #273548 !important; }
+html.dark th             { color: #cbd5e1 !important; border-bottom: 1px solid #334155 !important; }
+html.dark td             { color: #cbd5e1 !important; border-bottom: 1px solid #1e2a3a !important; }
+html.dark tbody tr:hover { background-color: #1a2438 !important; }
+html.dark .text-muted    { color: #64748b !important; }
+html.dark .td-name       { color: #f1f5f9 !important; }
+html.dark .category-pill { background: #334155 !important; color: #94a3b8 !important; }
+
+/* Amount colours must survive dark mode */
+html.dark .text-green { color: #4ade80 !important; }
+html.dark .text-red   { color: #f87171 !important; }
+html.dark .text-blue  { color: #60a5fa !important; }
+
+/* ── Table search ────────────────────────────────────────────── */
+html.dark .table-search              { background: #273548 !important; border-color: #334155 !important; }
+html.dark .table-search input        { background: transparent !important; color: #f1f5f9 !important; }
+html.dark .table-search input::placeholder { color: #64748b !important; }
+html.dark .table-search svg          { color: #64748b !important; }
+
+/* ── Filter bar (dark) ───────────────────────────────────────── */
+html.dark .filter-bar {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+}
+html.dark .filter-bar select,
+html.dark .filter-bar input[type="date"] {
+  background-color: #273548 !important;
+  border-color: #334155 !important;
+  color: #f1f5f9 !important;
+  /* This single line fixes the giant black dd-mm-yyyy text */
+  color-scheme: dark;
+}
+/* Chromium — style individual date segments */
+html.dark .filter-bar input[type="date"]::-webkit-datetime-edit-fields-wrapper { color: #f1f5f9 !important; }
+html.dark .filter-bar input[type="date"]::-webkit-datetime-edit-text            { color: #94a3b8 !important; }
+html.dark .filter-bar input[type="date"]::-webkit-datetime-edit-month-field,
+html.dark .filter-bar input[type="date"]::-webkit-datetime-edit-day-field,
+html.dark .filter-bar input[type="date"]::-webkit-datetime-edit-year-field      { color: #f1f5f9 !important; }
+html.dark .filter-bar input[type="date"]::-webkit-calendar-picker-indicator     { filter: invert(1) brightness(0.75); cursor: pointer; }
+
+/* ── ALL date inputs across app ─────────────────────────────── */
+html.dark input[type="date"] {
+  color-scheme: dark;
+}
+html.dark input[type="date"]::-webkit-datetime-edit-fields-wrapper { color: #f1f5f9 !important; }
+html.dark input[type="date"]::-webkit-datetime-edit-text            { color: #94a3b8 !important; }
+html.dark input[type="date"]::-webkit-datetime-edit-month-field,
+html.dark input[type="date"]::-webkit-datetime-edit-day-field,
+html.dark input[type="date"]::-webkit-datetime-edit-year-field      { color: #f1f5f9 !important; }
+html.dark input[type="date"]::-webkit-calendar-picker-indicator     { filter: invert(1) brightness(0.75); cursor: pointer; }
+
+/* ── All inputs / selects / textareas ───────────────────────── */
+html.dark input:not([type="radio"]):not([type="checkbox"]):not([type="color"]),
+html.dark select,
+html.dark textarea {
+  background-color: #273548 !important;
+  border-color: #334155 !important;
+  color: #f1f5f9 !important;
+  color-scheme: dark;
+}
+html.dark input::placeholder,
+html.dark textarea::placeholder { color: #64748b !important; }
+
+/* ── Modal ───────────────────────────────────────────────────── */
+html.dark .modal-overlay   { background: rgba(0,0,0,0.7) !important; }
+html.dark .modal-container {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+  color: #f1f5f9 !important;
+}
+html.dark .modal-header           { border-bottom: 1px solid #334155 !important; }
+html.dark .modal-header h2        { color: #f1f5f9 !important; }
+html.dark .form-group label,
+html.dark .modal-body label       { color: #cbd5e1 !important; }
+html.dark .close-btn              { background: transparent !important; color: #94a3b8 !important; }
+html.dark .close-btn:hover        { color: #f87171 !important; }
+html.dark .type-option            { border-color: #334155 !important; color: #94a3b8 !important; background: #273548 !important; }
+html.dark .type-option.active.expense { background: rgba(239,68,68,0.15) !important; border-color: #ef4444 !important; color: #f87171 !important; }
+html.dark .type-option.active.income  { background: rgba(74,222,128,0.15) !important; border-color: #4ade80 !important; color: #4ade80 !important; }
+
+/* ── View body ───────────────────────────────────────────────── */
+html.dark .view-body p        { color: #cbd5e1 !important; border-bottom: 1px solid #334155 !important; padding-bottom: 6px; }
+html.dark .view-body strong   { color: #f1f5f9 !important; }
+
+/* ── Viewer banner dark ──────────────────────────────────────── */
+html.dark .viewer-banner {
+  background: #2d1f00 !important;
+  border-left-color: #d97706 !important;
+  color: #fbbf24 !important;
+}
+
+/* ── Sidebar ──────────────────────────────────────────────────── */
+html.dark .sb-container     { background-color: #1e293b !important; border-right: 1px solid #334155 !important; }
+html.dark .sb-brand-title   { color: #f1f5f9 !important; }
+html.dark .sb-link-text     { color: #cbd5e1 !important; }
+html.dark .sb-group-header  { color: #64748b !important; }
+html.dark .sb-link-item     { color: #cbd5e1 !important; }
+html.dark .sb-link-item:hover,
+html.dark .sb-icon-btn:hover { background: rgba(108,93,211,0.2) !important; }
+html.dark .sb-active         { background: rgba(108,93,211,0.25) !important; color: #a78bfa !important; }
+html.dark .sb-icon-btn       { color: #cbd5e1 !important; }
+html.dark .sb-role-switcher  { background: rgba(108,93,211,0.14) !important; }
+html.dark .sb-role-label     { color: #64748b !important; }
+html.dark .sb-role-pill      { color: #94a3b8 !important; }
+html.dark .sb-bottom-controls { border-top-color: #334155 !important; }
+
+/* ── Budget page ─────────────────────────────────────────────── */
+html.dark .budget-stat-card .label    { color: #94a3b8 !important; }
+html.dark .budget-stat-card h3        { color: #f1f5f9 !important; }
+html.dark .budget-status-row .label   { color: #94a3b8 !important; }
+html.dark .budget-status-row .val     { color: #f1f5f9 !important; }
+html.dark .vertical-divider           { background: #334155 !important; }
+html.dark .alert-badge.success { background: rgba(74,222,128,0.15) !important; color: #4ade80 !important; border-color: #4ade80 !important; }
+html.dark .alert-badge.error   { background: rgba(248,113,113,0.15) !important; color: #f87171 !important; border-color: #f87171 !important; }
+
+/* ── Analytics page ──────────────────────────────────────────── */
+html.dark .cat-list-item  { border-bottom: 1px solid #334155 !important; }
+html.dark .cat-name       { color: #f1f5f9 !important; }
+html.dark .cat-percent    { color: #64748b !important; }
+html.dark .cat-amount     { color: #f1f5f9 !important; }
+html.dark .ring-title     { color: #f1f5f9 !important; }
+html.dark .ring-percent   { color: #94a3b8 !important; }
+
+/* ── Prediction page ─────────────────────────────────────────── */
+html.dark .hero-prediction-card { color: #fff !important; }
+html.dark .hero-label    { color: rgba(255,255,255,0.75) !important; }
+html.dark .hero-amount   { color: #fff !important; }
+html.dark .trend-badge   { color: rgba(255,255,255,0.85) !important; }
+html.dark .chart-title   { color: #f1f5f9 !important; }
+html.dark .chart-select  { background: #273548 !important; border-color: #334155 !important; color: #f1f5f9 !important; }
+html.dark .confidence-bar-bg { background: #334155 !important; }
+html.dark .insight-warning { background: rgba(245,158,11,0.1) !important; color: #fbbf24 !important; }
+html.dark .insight-success { background: rgba(74,222,128,0.1) !important; color: #4ade80 !important; }
+
+/* ── Settings page ───────────────────────────────────────────── */
+html.dark .settings-section-header h2 { color: #f1f5f9 !important; }
+html.dark .settings-card h3           { color: #f1f5f9 !important; }
+html.dark .settings-card p            { color: #94a3b8 !important; }
+html.dark .settings-card:hover        { background: #273548 !important; }
+html.dark .action-arrow               { color: #64748b !important; }
+
+/* ── Profile page ────────────────────────────────────────────── */
+html.dark .profile-card .card-header h3 { color: #f1f5f9 !important; }
+html.dark .input-group label            { color: #cbd5e1 !important; }
+html.dark .helper-text                  { color: #64748b !important; }
+html.dark .identity-info h2             { color: #f1f5f9 !important; }
+html.dark .email-badge { background: #334155 !important; color: #94a3b8 !important; }
+html.dark .cancel-btn  { background: #273548 !important; border-color: #334155 !important; color: #cbd5e1 !important; }
+
+/* ── Recharts ────────────────────────────────────────────────── */
+html.dark .recharts-cartesian-grid line     { stroke: #334155 !important; }
+html.dark .recharts-text,
+html.dark .recharts-cartesian-axis-tick-value { fill: #94a3b8 !important; }
+
+/* ── Action buttons (eye/edit/delete) ────────────────────────── */
+html.dark .action-btn              { background: #273548 !important; border-color: #334155 !important; color: #94a3b8 !important; }
+html.dark .action-btn.view:hover   { color: #60a5fa !important; }
+html.dark .action-btn.edit:hover   { color: #a78bfa !important; }
+html.dark .action-btn.delete:hover { color: #f87171 !important; }
+
+/* ── Dividers ────────────────────────────────────────────────── */
+html.dark hr,
+html.dark .divider { border-color: #334155 !important; }
+
+/* ================================================================
+   TXN FILTER BAR  —  replaces old .filter-bar on Transaction page
+   ================================================================ */
+.txn-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+}
+
+/* Date group wrapper */
+.txn-date-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0 10px;
+  height: 36px;
+}
+.txn-date-group .date-icon { color: #94a3b8; flex-shrink: 0; }
+.txn-date-group .date-sep  { color: #94a3b8; font-size: 12px; }
+
+/* Date inputs inside the group — no border/background of their own */
+.txn-date-group input[type="date"] {
+  border: none !important;
+  background: transparent !important;
+  font-size: 13px;
+  color: #334155;
+  outline: none;
+  width: 130px;
+  padding: 0;
+  height: auto;
+  color-scheme: light;
+}
+
+/* Dropdowns */
+.txn-filter-bar select {
+  padding: 0 12px;
+  height: 36px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 13px;
+  background: #f8fafc;
+  color: #334155;
+  cursor: pointer;
+  outline: none;
+  min-width: 130px;
+}
+.txn-filter-bar select:focus {
+  border-color: #6C5DD3;
+  box-shadow: 0 0 0 2px rgba(108,93,211,0.12);
+}
+
+/* ── Dark mode overrides for txn-filter-bar ─────────────────── */
+html.dark .txn-filter-bar {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+}
+html.dark .txn-date-group {
+  background: #273548 !important;
+  border-color: #334155 !important;
+}
+html.dark .txn-date-group .date-icon { color: #64748b !important; }
+html.dark .txn-date-group .date-sep  { color: #475569 !important; }
+html.dark .txn-date-group input[type="date"] {
+  background: transparent !important;
+  border: none !important;
+  color: #f1f5f9 !important;
+  color-scheme: dark;
+}
+/* Fix the giant dd-mm-yyyy placeholder in dark mode */
+html.dark .txn-date-group input[type="date"]::-webkit-datetime-edit-fields-wrapper { color: #f1f5f9 !important; }
+html.dark .txn-date-group input[type="date"]::-webkit-datetime-edit-text            { color: #64748b !important; }
+html.dark .txn-date-group input[type="date"]::-webkit-datetime-edit-month-field,
+html.dark .txn-date-group input[type="date"]::-webkit-datetime-edit-day-field,
+html.dark .txn-date-group input[type="date"]::-webkit-datetime-edit-year-field      { color: #f1f5f9 !important; }
+html.dark .txn-date-group input[type="date"]::-webkit-calendar-picker-indicator     { filter: invert(1) brightness(0.75); cursor: pointer; }
+
+html.dark .txn-filter-bar select {
+  background: #273548 !important;
+  border-color: #334155 !important;
+  color: #f1f5f9 !important;
+}
+html.dark .txn-filter-bar select:focus {
+  border-color: #6C5DD3 !important;
+}
+
+/* Responsive — stack on mobile */
+@media (max-width: 640px) {
+  .txn-filter-bar { flex-direction: column; align-items: stretch; }
+  .txn-date-group { width: 100%; }
+  .txn-filter-bar select { width: 100%; }
+}

@@ -1,5 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AppProvider } from "./AppContext";          // ← NEW
+
 import Login from "./Login";
 import SignUp from "./SignUp";
 import OnBoard from "./OnBoard";
@@ -9,8 +11,7 @@ import Budget from "./Budget";
 import Analytics from "./Analytics";
 import Prediction from "./Prediction";
 import Home from "./Home";
-
-import Setting from './Setting'
+import Setting from "./Setting";
 import ProtectedRoute from "./services/ProtectedRoute";
 import Profile from "./Profile";
 import Category from "./Category";
@@ -18,34 +19,36 @@ import NotFound from "./NotFound";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
+    // ── AppProvider wraps everything so Context is available app-wide ──────
+    <AppProvider>
+      <BrowserRouter>
+        <Routes>
 
-        {/* Public Routes */}
-        <Route path="/" element={<Home />} />
-        <Route path="/home" element={<Home />} />
+          {/* Public Routes */}
+          <Route path="/"        element={<Home />} />
+          <Route path="/home"    element={<Home />} />
+          <Route path="/login"   element={<Login />} />
+          <Route path="/register" element={<SignUp />} />
+          <Route path="/onboard" element={<OnBoard />} />
 
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<SignUp />} />
-        <Route path="/onboard" element={<OnBoard />} />
+          {/* Protected Routes */}
+          <Route element={<ProtectedRoute />}>
+            <Route path="/dashboard"   element={<Dashboard />} />
+            <Route path="/transaction" element={<Transaction />} />
+            <Route path="/budget"      element={<Budget />} />
+            <Route path="/analytics"   element={<Analytics />} />
+            <Route path="/prediction"  element={<Prediction />} />
+            <Route path="/settings"    element={<Setting />} />
+            <Route path="/profile"     element={<Profile />} />
+            <Route path="/categories"  element={<Category />} />
+          </Route>
 
-        {/* Protected Wrapper */}
-        <Route element={<ProtectedRoute />}>
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/transaction" element={<Transaction />} />
-          <Route path="/budget" element={<Budget />} />
-          <Route path="/analytics" element={<Analytics />} />
-          <Route path="/prediction" element={<Prediction />} />
-          <Route path="/settings" element={<Setting />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/categories" element={<Category />} />
-        </Route>
+          {/* 404 */}
+          <Route path="*" element={<NotFound />} />
 
-        {/* 404 */}
-        <Route path="*" element={<NotFound />} />
-
-      </Routes>
-    </BrowserRouter>
+        </Routes>
+      </BrowserRouter>
+    </AppProvider>
   );
 }
 

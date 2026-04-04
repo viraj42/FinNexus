@@ -28,6 +28,9 @@ exports.predictNextMonthExpense = async (req, res) => {
       });
     }
 
+    console.log("Hii");
+    
+
     const currency = user.currency || "INR";
 
     // ✅ Prediction service
